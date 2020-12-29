@@ -55,6 +55,9 @@ There are many components in the above scrpit:
 
 -   Note that using key `F1` or going to `Help > Command Help` in *XSE* brings us a list of all known commands will be displayed.
 
+![Scripted Dialogue Example](/docs/tute7-dialogue.png)
+
+
 <br>
 
 #### Compiling
@@ -80,7 +83,7 @@ A new window with compiler output and a list of offsets will pop up, this shows 
 #### Hexadecimal Data Format
 Opening the game ROM in a hex editor shows all game data in hex format, this is how the game data is normally saved. (Be careful when dealing with this file since you can accidentally break things and damage the entire ROM unintentionally.)
 
-![hxd editor with emerald ROM image loaded](/docs/hxd-view.png)
+![Hxd Editor with Emerald ROM Loaded](/docs/hxd-view.png)
 
 Search for `FFFFFFFFFF` which indicates a whole lot of empty space in the ROM and this will potentially be the memory blocks that we would be manipulating over, but not through a hex editor, instead through scripting in *XSE* (at this stage).
 
