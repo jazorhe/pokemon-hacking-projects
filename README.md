@@ -349,3 +349,5 @@ removeitem 0xITEM 0xQUANTITY
 ```
 
 From the same example used above, we took the Potion away from the player after we checked that he/she has enough of it.
+![Script Event Tile Placement](/docs/script-event-oak-example.png =200px)
+![Script Event Inspector, 20%](/docs/script-event-oak-example-inspector.png)
