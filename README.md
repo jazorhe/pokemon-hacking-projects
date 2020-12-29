@@ -10,8 +10,9 @@
     -   Tutorial 6
 -   **Scripting**
     -   [Tutorial 7: The Basics of Scripting](#tutorial-7-the-basics-of-scripting-vide-link)
-    -   [Tutorial 8: Msgbox Exhaustion](#tutorial-8-msgbox-exhaustion-vide-link)
-    -   [Tutorial 9: Exchanging Possessions](#tutorial-9-exchanging-possessions-vide-link)
+    -   [Tutorial 8: Msgbox Exhaustion](#tutorial-8-msgbox-exhaustion-video-link)
+    -   [Tutorial 9: Exchanging Possessions](#tutorial-9-exchanging-possessions-video-link)
+    -   [Tutorial 10: History Never Repeats Itself](#tutorial-10-history-never-repeats-itself-video-link)
 
 ## Mapping:
 
