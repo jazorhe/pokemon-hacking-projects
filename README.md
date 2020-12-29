@@ -13,6 +13,7 @@
     -   [Tutorial 8: Msgbox Exhaustion](#tutorial-8-msgbox-exhaustion-video-link)
     -   [Tutorial 9: Exchanging Possessions](#tutorial-9-exchanging-possessions-video-link)
     -   [Tutorial 10: History Never Repeats Itself](#tutorial-10-history-never-repeats-itself-video-link)
+    -   [Tutorial 11: Mobility](#tutorial-11-mobility-video-link)
 
 ## Mapping:
 
@@ -486,9 +487,8 @@ Script events are used to stop the player in his or her tracks and trigger a scr
 
 An example of this would be Professor Oak stopping us from going in to the tall grass:
 
-<img alt="Script Event Tile Placement" src="/docs/script-event-oak-example.png" width="200px">
-
-<img alt="Script Event Inspector" src="/docs/script-event-oak-example-inspector.png" width="200px">
+<img alt="Script Event Tile Placement" src="/docs/script-event-oak-example.png" width="200px" display="inline-block">
+<img alt="Script Event Inspector" src="/docs/script-event-oak-example-inspector.png" width="200px" display="inline-block">
 
 Every one of the safe variables will have initial value of `0x0`.
 
@@ -565,3 +565,9 @@ pause 0xTIME
 The value `0x30` is approximately 1 second in real time.
 
 Other commands will be covered in a future tutorial.
+
+
+### Tutorial 11: Mobility (*[Video link](https://www.youtube.com/watch?v=CukAvOWy8pU)*)
+#### Objectives:
+-   Moving a Sprite
+-   Moving the Camera
