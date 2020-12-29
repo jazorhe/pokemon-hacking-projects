@@ -1,0 +1,15 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+fadescreen 0x1
+hidesprite 0x4
+setflag 0x201
+fadescreen 0x0
+release
+end
+
+#org @t1
+= I was never here...

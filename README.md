@@ -106,7 +106,7 @@ Search for `FFFFFFFFFF` which indicates a whole lot of empty space in the ROM an
 It is worth mentioning that *Emerald* is known with a lot less free space while *FireRed* is known to have a lot more empty space.
 
 
-### Tutorial 8: Msgbox Exhaustion (*[Vide link](https://www.youtube.com/watch?v=cL9m4ZRasbc)*)
+### Tutorial 8: Msgbox Exhaustion (*[Video link](https://www.youtube.com/watch?v=cL9m4ZRasbc)*)
 
 #### Objectives:
 -   Long Strings
@@ -229,7 +229,7 @@ There are multiple pre-formatted dialogue boxes what defines the behaviour when 
 
 -   There are also other types of message boxes, e.g. multiple choice, however will be covered in a future video.
 
-### Tutorial 9: Exchanging Possessions (*[Vide link](https://www.youtube.com/watch?v=H47rkg9sGzM)*)
+### Tutorial 9: Exchanging Possessions (*[Video link](https://www.youtube.com/watch?v=H47rkg9sGzM)*)
 
 #### Objectives:
 -   Give the player a Pokémon
@@ -350,12 +350,218 @@ removeitem 0xITEM 0xQUANTITY
 ```
 
 From the same example used above, we took the Potion away from the player after we checked that he/she has enough of it.
-![Script Event Tile Placement](/docs/script-event-oak-example.png =200px)
-<!-- ![Script Event Tile Placement](/docs/script-event-oak-example.png =200px) -->
 
-![Script Event Tile Placement](/docs/script-event-oak-example.png){ width=50% }
 
-![Script Event Inspector, 20%](/docs/script-event-oak-example-inspector.png)
-![Script Event Tile Placement](/docs/script-event-oak-example.png | width=100)
+### Tutorial 10: History Never Repeats Itself (*[Video link](https://www.youtube.com/watch?v=II4_T3MCnLo)*)
 
-![Script Event Inspector](/docs/script-event-oak-example-inspector.png =250x250)
+#### Objectives:
+-   Flags
+-   Fade Screen and Hide Sprite
+-   Variables
+-   *AdvancedMap*'s Script Events
+-   `spriteface`
+-   `showpokepic`
+-   `pause`
+
+#### Flags
+Flags are used when we only want an event to occur once or after a certain point in the storyline is reached. Every single instance of a flag use can be attributed to an on or off state.
+
+Each flag is represented by a hexadecimal value.
+
+Some notable flags in the game:
+![Notable Flags](/docs/notable-flags.png)
+
+In *AdvancedMap*, when click on an NPC in a particular map, there is a `Person ID`. It also applies to pickable items on the ground.
+
+To set a flag in ROM:
+```
+setflag 0xFLAGNUM
+```
+
+To check if a flag is set:
+```
+checkflag 0xFLAGNUM
+```
+
+An example of flag usage:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+checkflag 0x200
+if 0x1 goto @alreadyReceived
+msgbox @t1 0x6
+giveitem 0xD 0x1 MSG_OBTAIN
+setflag 0x200
+release
+end
+
+#org @alreadyReceived
+msgbox @t2 0x6
+release
+end
+
+#org @t2
+= You can't have another one!
+
+#org @t1
+= Here's a Pokéball!
+```
+
+Flag lists:
+-   FireRed Safe Flags: `0x200`-`0x2FF`.
+-   Safe Flag list for Ruby and Emerald cannot be found on the internet but see below `Unsafe Flags` when decided what to use.
+-   Special Flags: [Pokémon Generation III ROM Hacking - Special Flags.txt](/docs/PokémonGenerationIIIROMHacking-SpecialFlags.txt)
+-   Unsafe Flags: [Pokémon Generation III ROM Hacking - Unsafe Flags.txt](/docs/PokémonGenerationIIIROMHacking-UnsafeFlags.txt)
+
+#### Fade Screen and Hide Sprite
+Command for screen fading is the following:
+```
+fadescreen 0xTYPE
+```
+Where there are 4 types of fading effects that can be utilised:
+-   `0x0` - Fade screen from black to normal
+-   `0x1` - Fade screen from normal to black
+-   `0x2` - Fade screen from white to normal
+-   `0x3` - Fade screen from normal to white
+
+Further more, to hide a sprite:
+```
+hidesprite 0xNUM
+```
+Where `0xNUM` is the hexadecimal value of the NPC as shown in *AdvancedMap* in the `Person Event` number box.
+
+Below is an example of an NPC disappearing after dialogue:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+fadescreen 0x1
+hidesprite 0x4
+setflag 0x201
+fadescreen 0x0
+release
+end
+
+#org @t1
+= I was never here...
+```
+The `FLAGNUM` will then need to be inserted into *AdvancedMap* as the Person ID of the NPC in order for the game to know which sprite to set as hidden.
+
+Additionally, there is a command to clear the value of a flag:
+```
+clearflag 0xFLAGNUM
+```
+This clears the value of the particular flag as if it has not been set.
+
+
+#### Variables
+Variable can be set to any number between `0x0` to `0xffff`. This means we can set a variable to any of 65,536 values.
+
+Recall we used the `compare` command when checking answer for YES/NO question:
+```
+compare 0xVARNUM 0x1
+if 0x1 goto @yes
+```
+Where `0xVARNUM` is the associated variable number. In the YES/NO question case, it would be `LASTRESULT`.
+
+The above would effective be checking if `0xVARNUM` stores the value `0x1`.
+
+To set a variable, use the following command:
+```
+setvar 0xVARNUM 0xVALUE
+```
+
+-   FireRed Safe Variables: `0x4011`-`0x40FF`
+-   Safe Variables for Ruby and Emerald should mostly be the same as FireRed, but is not fully confirmed.
+
+
+#### *AdvancedMap*'s Script Events
+Script events are used to stop the player in his or her tracks and trigger a script.
+
+An example of this would be Professor Oak stopping us from going in to the tall grass:
+
+<img alt="Script Event Tile Placement" src="/docs/script-event-oak-example.png" width="200px">
+
+<img alt="Script Event Inspector" src="/docs/script-event-oak-example-inspector.png" width="200px">
+
+Every one of the safe variables will have initial value of `0x0`.
+
+Note that a script event will only activate if the variable number stores the variable value shown in *AdvancedMap*.
+
+Example:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+spriteface 0x4 0x3
+spriteface 0xff 0x4
+msgbox @t1 0x6
+applymovement 0xFF 0x4
+waitmovement 0x0
+release
+end
+
+#org @m1
+#raw 0x8
+#raw oxFE
+
+#org @t1
+= If you wish to enter, you must\nfirst speak to me.
+```
+This scripts stops the player from entering an area, forces the player and the NPC to look at each other, triggers a dialogue, then moves the player in the desired direction.
+
+This script will be assigned to the related tiles.
+
+```
+#dynamic 0x800000
+
+#org @start
+lock
+facebplayer
+msgbox @allowPass 0x6
+setvar 0x4011 0x1
+release
+end
+
+#org @allowPass
+= You may now enter the building.
+```
+This script will be assigned to the NPC, and after spoken to the NPC, the variable value will no longer be `0` and the above script event will then not be triggered.
+
+#### `spriteface`
+To force a sprite looking at a direciton:
+```
+spriteface 0xTARGET 0xDIRECTION
+```
+Where the `0XTARGET` can be set to:
+-   Any NPC `Person ID` in the map
+-   `0xFF` - Set target to player instead of an NPC
+
+And the direction of which the target is set to face `0xDIRECTION`:
+-   `0x1` - Down
+-   `0x2` - Up
+-   `0x3` - Left
+-   `0x4` - Right
+
+#### `showpokepic`
+To show a Pokémon picture, use the following command:
+```
+showpokepic 0xPOKEMON 0xX 0xY
+```
+Where `0xPOKEMON` is the Pokémon code of which Pokémon you wish to show, `0xX` and `0xY` will be the location of which you place the picture. Use `0xA 0x3` to place the picture in the centre.
+
+#### `pause`
+`pause` delays the script execution for a specified amount of time:
+```
+pause 0xTIME
+```
+The value `0x30` is approximately 1 second in real time.
+
+Other commands will be covered in a future tutorial.

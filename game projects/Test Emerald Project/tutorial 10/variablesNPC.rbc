@@ -1,0 +1,12 @@
+#dynamic 0x800000
+
+#org @start
+lock
+facebplayer
+msgbox @allowPass 0x6
+setvar 0x4011 0x1
+release
+end
+
+#org @allowPass
+= You may now enter the building.

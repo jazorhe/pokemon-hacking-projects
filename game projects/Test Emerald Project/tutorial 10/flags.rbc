@@ -1,0 +1,23 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+checkflag 0x200
+if 0x1 goto @alreadyReceived
+msgbox @t1 0x6
+giveitem 0xD 0x1 MSG_OBTAIN
+setflag 0x200
+release
+end
+
+#org @alreadyReceived
+msgbox @t2 0x6
+release
+end
+
+#org @t2
+= You can't have another one!
+
+#org @t1
+= Here's a Pokéball!

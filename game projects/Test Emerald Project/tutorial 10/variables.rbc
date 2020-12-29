@@ -1,0 +1,18 @@
+#dynamic 0x800000
+
+#org @start
+lock
+spriteface 0x4 0x3
+spriteface 0xff 0x4
+msgbox @t1 0x6
+applymovement 0xFF 0x4
+waitmovement 0x0
+release
+end
+
+#org @m1
+#raw 0x8
+#raw oxFE
+
+#org @t1
+= If you wish to enter, you must\nfist speak to me.
