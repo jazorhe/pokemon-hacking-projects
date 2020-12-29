@@ -21,7 +21,7 @@
 Following [tutorials](https://www.youtube.com/watch?v=UgI35RdZvq4&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps) made by [Anthroyd](https://www.youtube.com/channel/UCQF_14PVCYMRQv3pJVe13OA), below are notes taken in the process of learning.
 
 
-### Tutorial 7: The Basics of Scripting (*[Vide link](https://www.youtube.com/watch?v=wJw4tz0kcAI)*)
+### Tutorial 7: The Basics of Scripting (*[Video link](https://www.youtube.com/watch?v=wJw4tz0kcAI)*)
 #### Objectives:
 -   How does XSE work?
 -   Simple NPC Script
@@ -351,4 +351,6 @@ removeitem 0xITEM 0xQUANTITY
 
 From the same example used above, we took the Potion away from the player after we checked that he/she has enough of it.
 ![Script Event Tile Placement](/docs/script-event-oak-example.png =200px)
+<!-- ![Script Event Tile Placement](/docs/script-event-oak-example.png =200px) -->
+
 ![Script Event Inspector, 20%](/docs/script-event-oak-example-inspector.png)
