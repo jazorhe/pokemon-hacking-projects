@@ -356,3 +356,6 @@ From the same example used above, we took the Potion away from the player after 
 ![Script Event Tile Placement](/docs/script-event-oak-example.png){ width=50% }
 
 ![Script Event Inspector, 20%](/docs/script-event-oak-example-inspector.png)
+![Script Event Tile Placement](/docs/script-event-oak-example.png | width=100)
+
+![Script Event Inspector](/docs/script-event-oak-example-inspector.png =250x250)
