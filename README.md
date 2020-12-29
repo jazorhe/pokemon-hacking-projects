@@ -10,8 +10,8 @@
     -   Tutorial 6
 -   **Scripting**
     -   [Tutorial 7: The Basics of Scripting](#tutorial-7-the-basics-of-scripting-vide-link)
-    -   [Tutorial 8: Msgbox Exhaustion] ()
-    -   [Tutorial 9: Exchanging Possessions] ()
+    -   [Tutorial 8: Msgbox Exhaustion](#tutorial-8-msgbox-exhaustion-vide-link)
+    -   [Tutorial 9: Exchanging Possessions](#tutorial-9-exchanging-possessions-vide-link)
 
 ## Mapping:
 
@@ -67,7 +67,9 @@ There are many components in the above scrpit:
 
 -   `end`: Indicates the end of the script.
 
--   To add comment in the script, simply put `' ` at the end of line and add comments after.
+-   To add comment in the script, simply put single quotation mark `' ` at the end of line and add comments after.
+
+-   Blank space means nothing in XSE.
 
 -   Note that using key `F1` or going to `Help > Command Help` in *XSE* brings us a list of all known commands will be displayed.
 
@@ -224,3 +226,126 @@ There are multiple pre-formatted dialogue boxes what defines the behaviour when 
 
 -   `0x6` - No specific property has been attached to the message box. Meaning commands like `lock`, `faceplayer`, `release` needs to be added.
 
+-   There are also other types of message boxes, e.g. multiple choice, however will be covered in a future video.
+
+### Tutorial 9: Exchanging Possessions (*[Vide link](https://www.youtube.com/watch?v=H47rkg9sGzM)*)
+
+#### Objectives:
+-   Give the player a Pokémon
+-   Give the player an item
+-   Check if the player has a particular item
+-   Comparing Numbers in XSE
+-   Take an item away from the player
+
+#### Give the player a Pokémon
+The command to give the player a Pokémon is the following:
+```
+givepokemon 0xPOKEMON 0xLEVEL 0xITEM 0x0 0x0 0x0
+```
+The area with `POKEMON`, `LEVEL` and `ITEM` needs to be filled with hex number with the correlated Pokémon or item codes. Gen III codes are as below:
+
+-   Pokémon Codes: [Pokémon Generation III ROM Hacking - Pokémon Values.txt]()
+-   Item Codes: [Pokémon Generation III ROM Hacking - Item Values.txt]()
+
+Here is an example of using the `givepokemon` command.
+```
+#dynamic 0x800000
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+givepokemon 0x7 0xA 0x8A 0x0 0x0 0x0
+setflag 0x828
+release
+end
+
+#org @t1
+= [black_fr]Here is a Pokemon!
+```
+Notice that if you wish to give the player a Pokémon before professor Oak gives him/her the fisrt Pokémon, you set a flag. This number varies between versions of Pokémon: `0x828`'for fr, `0x800` ruby, and `0x860` for emerald.
+
+Sounds and congratulating message aren't a part of the `givepokemon` command, playing sounds will be covered in a future tutorial.
+
+
+#### Give the player an item
+The command to give the player an item is the following:
+```
+giveitem 0xITEM 0xQUANTITY TYPE_OF_MSG
+```
+
+Example as following:
+```
+#dynamic 0x800000
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+giveitem 0x4 0x12 MSG_OBTAIN
+release
+end
+
+#org @t1
+= [black_fr]Here is an Item!
+```
+Note that there are two types of messages when giving the player an item.
+-   `MSG_FIND` - Player found the item
+-   `MSG_OBTAIN` - Player obtained through an NPC
+
+This command will play a sound effect for obtaining the item and also a congratulating message depending on which type was chosen.
+
+
+#### Check if the player has a particular item
+The command for checking if the player have the particular item with the specific quantity is the following:
+```
+checkitem 0xITEM 0xQUANTITY
+```
+
+#### Comparing Numbers in XSE
+Below is an example to check and compare item from the player's bag:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+checkitem 0xD 0x1
+compare LASTRESULT 0x1
+if 0x4 goto @yes
+msg @t2 0x6
+release
+end
+
+#org @yes
+removeitem 0xD 0x1
+msgbox @t3 0x6
+release
+end
+
+#org @t3
+= [blue_fr]Man[black_fr]: I took a [green_fr]Potion[black_fr] from you!
+
+#org @t2
+= [blue_fr]Man[black_fr]: You don't have what I am\nlooking for!
+
+#org @t1
+= [blue_fr]Man[black_fr]: Let me check your bag...
+```
+Note we used the command `compare` and `goto` again. Using these two commands we can create events with very dynamic situations and results. At the very end we can converge the event again if needed using `goto @complete` and define `@complete` in the script.
+
+Comparison Operators:
+-   `0x0` -  Less than
+-   `0x1` -  Equal to
+-   `0x2` -  Greater than
+-   `0x3` -  Less than or equal to
+-   `0x4` -  Greater than or equal to
+-   `0x5` -  Not equal to
+
+#### Take an item away from the player
+The command to take an item away from the player is the following:
+
+```
+removeitem 0xITEM 0xQUANTITY
+```
+
+From the same example used above, we took the Potion away from the player after we checked that he/she has enough of it.

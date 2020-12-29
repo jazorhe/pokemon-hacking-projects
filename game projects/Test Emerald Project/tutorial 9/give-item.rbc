@@ -1,0 +1,11 @@
+#dynamic 0x800000
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+giveitem 0x4 0x12 MSG_OBTAIN
+release
+end
+
+#org @t1
+= [black_fr]Here is an Item!

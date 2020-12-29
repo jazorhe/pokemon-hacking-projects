@@ -1,0 +1,27 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+checkitem 0xD 0x1
+compare LASTRESULT 0x1
+if 0x4 goto @yes
+msg @t2 0x6
+release
+end
+
+#org @yes
+removeitem 0xD 0x1
+msgbox @t3 0x6
+release
+end
+
+#org @t3
+= [blue_fr]Man[black_fr]: I took a [green_fr]Potion[black_fr] from you!
+
+#org @t2
+= [blue_fr]Man[black_fr]: You don't have what I am\nlooking for!
+
+#org @t1
+= [blue_fr]Man[black_fr]: Let me check your bag...
