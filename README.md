@@ -35,7 +35,7 @@ end
 There are many components in the above scrpit:
 -   `#dynamic 0x800000`: This line searches in the game ROM for free memory locations starting at memory address with `0x800000`. Whenever we use `0x` following a number, we are telling the compiler that this number is in hexadecimal format instead of decimal format.
 
-    We are using the specific location `0x800000` just because it is a conventional location in general to begin looking for free space. In the [Hexadecimal Data Format section](#/hexadecimal-data-format), there is a bit more information about the data format and memory of the game.
+    We are using the specific location `0x800000` just because it is a conventional location in general to begin looking for free space. In the [Hexadecimal Data Format section](#hexadecimal-data-format), there is a bit more information about the data format and memory of the game.
 
 -   `#org @start`: This line denotes the beginning of the script.
 
