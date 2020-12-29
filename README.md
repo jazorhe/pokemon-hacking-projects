@@ -1,5 +1,16 @@
 # pokemon-hacking-projects
 
+## Contents:
+-   **Mapping**
+    -   Tutorial 1
+    -   Tutorial 2
+    -   Tutorial 3
+    -   Tutorial 4
+    -   Tutorial 5
+    -   Tutorial 6
+-   **Scripting**
+    -   [Tutorial 7: The Basics of Scripting](#tutorial-7-the-basics-of-scripting-vide-link)
+    -   [Tutorial 8: Msgbox Exhaustion] ()
 
 ## Mapping:
 
@@ -15,7 +26,6 @@ Following [tutorials](https://www.youtube.com/watch?v=UgI35RdZvq4&list=PLfI5DBI4
 -   [**HxD**](https://mh-nexus.de/en/downloads.php?product=HxD): A straightforward hex editor.
 -   [**AdvancedMap (1.92)**](http://ampage.no-ip.info/index.php?seite=home) by LU-HO: Map editor for Gen III binary hacks.
 
-<br>
 
 #### Start Scripting
 Starting a new script in *XSE* with the following lines:
@@ -58,8 +68,6 @@ There are many components in the above scrpit:
 ![Scripted Dialogue Example](/docs/tute7-dialogue.png)
 
 
-<br>
-
 #### Compiling
 -   Save the script somewhere
 -   Go to `Tools > Batch Compiler` in *XSE*
@@ -78,7 +86,6 @@ A new window with compiler output and a list of offsets will pop up, this shows 
 -   `Save` the Changes
 -   Now run the game
 
-<br>
 
 #### Hexadecimal Data Format
 Opening the game ROM in a hex editor shows all game data in hex format, this is how the game data is normally saved. (Be careful when dealing with this file since you can accidentally break things and damage the entire ROM unintentionally.)
@@ -88,3 +95,6 @@ Opening the game ROM in a hex editor shows all game data in hex format, this is 
 Search for `FFFFFFFFFF` which indicates a whole lot of empty space in the ROM and this will potentially be the memory blocks that we would be manipulating over, but not through a hex editor, instead through scripting in *XSE* (at this stage).
 
 It is worth mentioning that *Emerald* is known with a lot less free space while *FireRed* is known to have a lot more empty space.
+
+
+### Tutorial 8: Msgbox Exhaustion (*[Vide link](https://www.youtube.com/watch?v=cL9m4ZRasbc)*)
