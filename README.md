@@ -9,12 +9,12 @@
     -   Tutorial 5
     -   Tutorial 6
 -   **Scripting**
-    -   [Tutorial 7: The Basics of Scripting](#tutorial-7-the-basics-of-scripting-vide-link)
+    -   [Tutorial 7: The Basics of Scripting](#tutorial-7-the-basics-of-scripting-video-link)
     -   [Tutorial 8: Msgbox Exhaustion](#tutorial-8-msgbox-exhaustion-video-link)
     -   [Tutorial 9: Exchanging Possessions](#tutorial-9-exchanging-possessions-video-link)
     -   [Tutorial 10: History Never Repeats Itself](#tutorial-10-history-never-repeats-itself-video-link)
     -   [Tutorial 11: Mobility](#tutorial-11-mobility-video-link)
-    -   [Tutorial 12: ](#tutorial-12--video-link)
+    -   [Tutorial 12: Instant Script Activation](#tutorial-12-instant-script-activation-video-link)
 
 ## Mapping:
 
@@ -32,6 +32,7 @@ Following [tutorials](https://www.youtube.com/watch?v=UgI35RdZvq4&list=PLfI5DBI4
 
 #### Tools
 -   [**XSE - eXtreme Script Editor**](https://github.com/Gamer2020/Unofficial_*XSE*/releases) by HackMew: known as "The best scripting tool for Gen III binary hacks."
+    -   [An *XSE* discussion post on PokéCommunity](https://www.pokecommunity.com/showthread.php?t=164276)
 -   [**HxD**](https://mh-nexus.de/en/downloads.php?product=HxD): A straightforward hex editor.
 -   [**AdvancedMap (1.92)**](http://ampage.no-ip.info/index.php?seite=home) by LU-HO: Map editor for Gen III binary hacks.
 
@@ -629,3 +630,89 @@ Note that at any given time, the player can see 7 tiles to the left of Player, 7
 List of other special values:
 -   Special Values: [Pokémon Generation III ROM Hacking - Special Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Special%20Values.txt)
 
+
+### Tutorial 12: Instant Script Activation (*[Video link](https://www.youtube.com/watch?v=FttPQvAyWB4&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=13)*)
+
+#### Objectives:
+-   Level Script
+-   Decompiling a Script
+-   Activate Script Immediately
+-   Properly Saving a `Map Script`
+-   Other `Map Script` Types
+
+#### Level Script
+In *AdvancedMap*, select a map and go to the `Header` tab. In `Map Script` contains all scripts used related to the map/level.
+
+<img alt="Map Script Options" src="/docs/map-script-options.png" width="600px">
+
+
+#### Decompiling a Script
+To decompile a script, copy the `Offset` and paste in *XSE*, hit decompile.
+
+For instance, decompiling a Fire Red Script we get:
+```
+'-----------------
+#org 0x166477
+setworldmapflag 0x893
+checkflag 0x234
+if 0x0 call 0x8166484
+end
+
+'-----------------
+#org 0x166484
+movesprite2 0x1 0x1E 0xC
+movesprite2 0x5 0x1A 0x1F
+movesprite2 0x6 0x1B 0x1F
+return
+```
+
+The `setworldmapflag 0xMAP` allows player to fly to this map. This can be found in any `Map Script` with type `03`. This does not exist in Ruby / Emerald.
+
+The `call` command allow script to jump to another mamory location.
+
+The `movesprite2` command allows movements of a hidden sprite. There is a [discussion](pokecommunity.com/showthread.php?t=371236) about this command in the PokéCommunity.
+
+
+#### Activate Script Immediately
+`Map Script` with type `02` are scripts that immediately run as soon as the player hit the new territory or arrive at an old territory. Keep track at the variable/flag so that the event does not happen everytime the player arrives (unless that is what you want).
+
+Example of showing a piece of text when first enter a map, and never showing it again:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+msgbox @t1 0x4
+closeonkeypress
+setvar 0x3011 0x1
+release
+end
+
+#org @t1
+= [blue_fr]This [red_fr]is [black_fr]it.
+```
+
+This script will run when player first enter the area. Then a type `03` script will clear some flags and setup all other sprites after `02` is concluded.
+
+
+#### Properly Saving a `Map Script`
+-   Remember to change variable of `Map Script` so that the event only occurs once (unless you wanted it otherwise)
+-   Hit `Save Map Scripts`
+-   Hit `Ctrl-H` while still in the `Header` tab, this will show some more technical information
+-   Under `Map Options`, copy `Map Script Offset` value
+-   Paste in *XSE*
+-   Hit `Level Script` button (the spanner button) next to the Decompile button
+-   Hit `Decompile`
+-   If there is a command which says:
+    ```
+    #raw word 0xFFFF
+    ```
+    Change `0xFFFF` to `0x0000`. Sometimes this is already done.
+-   Hit `Compile` to overwrite the previous script (the cog button).
+
+
+#### Other `Map Script` Types
+-   Type `01` - Setmaptile: this is used if the map needs to be dynamically restructured when the player enters. This will be talked about further in a future tutorial.
+-   Type `00` - No Scripts: does not do anything.
+-   Type `04` - Typically used when player is warpped and needed to be set to a particular behaviour or orientation before the screen fades from black to normal.
+-   Type `05` and `07` are hardly ever used.

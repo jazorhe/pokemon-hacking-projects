@@ -1,0 +1,12 @@
+#dynamic 0x800000
+
+#org @start
+lock
+msgbox @t1 0x4
+closeonkeypress
+setvar 0x3011 0x1
+release
+end
+
+#org @t1
+= [blue_fr]This [red_fr]is [black_fr]it.
