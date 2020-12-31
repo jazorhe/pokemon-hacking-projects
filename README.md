@@ -15,6 +15,7 @@
     -   [Tutorial 10: History Never Repeats Itself](#tutorial-10-history-never-repeats-itself-video-link)
     -   [Tutorial 11: Mobility](#tutorial-11-mobility-video-link)
     -   [Tutorial 12: Instant Script Activation](#tutorial-12-instant-script-activation-video-link)
+    -   [Tutorial 13: Advice and Errata](#tutorial-13-advice-and-errata-video-link)
 
 ## Mapping:
 
@@ -625,7 +626,7 @@ end
 #raw 0xFE
 ```
 
-Note that at any given time, the player can see 7 tiles to the left of Player, 7 tiles to the right, 5 and 1/2 upwards and 5 and 1/2 downwards.
+Note that at any given time, the player can see 7 tiles to the left of Player, 7 tiles to the right, 4 and 1/2 upwards and 4 and 1/2 downwards.
 
 List of other special values:
 -   Special Values: [Pokémon Generation III ROM Hacking - Special Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Special%20Values.txt)
@@ -716,3 +717,17 @@ This script will run when player first enter the area. Then a type `03` script w
 -   Type `00` - No Scripts: does not do anything.
 -   Type `04` - Typically used when player is warpped and needed to be set to a particular behaviour or orientation before the screen fades from black to normal.
 -   Type `05` and `07` are hardly ever used.
+
+
+### Tutorial 13: Advice and Errata (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=14)*)
+#### Objectives:
+-   Copy and Past Map Tiles
+-   Text Adjustor
+-   Additional Commands
+    -   `checkgender` gives `LASTRESULT` value of `0x0` if character is male and `0x1` if character is female
+    -   `giveegg 0xPOKEMON` gives player an egg
+    -   `waitstate` makes the script to wait until a `special` effect is finished
+    -   `waitkeypress` makes the script to wait until the player hits any key
+    -   `lockall` and `releaseall` is similar to `lock` and `release`, however, instead of locking and releasing the player, it does it to all NPCs in the map
+-   Mistakes
+    -   `Script Event` related to tile elevated height ([at 05:45](https://www.youtube.com/watch?v=zKOkaRWfp1E&t=345s))
