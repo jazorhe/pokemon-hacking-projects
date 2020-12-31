@@ -14,6 +14,7 @@
     -   [Tutorial 9: Exchanging Possessions](#tutorial-9-exchanging-possessions-video-link)
     -   [Tutorial 10: History Never Repeats Itself](#tutorial-10-history-never-repeats-itself-video-link)
     -   [Tutorial 11: Mobility](#tutorial-11-mobility-video-link)
+    -   [Tutorial 12: ](#tutorial-12--video-link)
 
 ## Mapping:
 
@@ -130,55 +131,22 @@ Example:
 
 
 #### Coloring Strings
-Some predefined color codes in Gen III Pokémon Games.
-```
------ FIRE RED & LEAF GREEN -----
--   White - [white_fr]
--   Black - [black_fr] (default)
--   Gray - [grey_fr]
--   Red - [red_fr]
--   Orange - [orange_fr]
--   Green - [green_fr]
--   Light Green - [lightgreen_fr]
--   Blue - [blue_fr]
--   Light Blue - [lightblue_fr]
--   Light Blue 2 - [lightblue2_fr]
--   Cyan - [cyan_fr]
--   Light Blue 3 - [lightblue3_fr]
--   Navy Blue - [navyblue_fr]
--   Dark Navy Blue - [darknavyblue_fr]
+To color a string, simply put the corresponding color code for the specific game before the part of text needed to be colored.
 
------ RUBY & SAPPHIRE -----
--   Transparent - [transp_rs]
--   Dark Gray - [darkgrey_rs] (default)
--   Red - [red_rs]
--   Light Green - [lightgreen_rs]
--   Blue - [blue_rs]
--   Yellow - [yellow_rs]
--   Cyan - [cyan_rs]
--   Magenta - [magenta_rs]
--   Gray - [grey_rs]
--   Black - [black_rs]
--   Light Gray - [lightgrey_rs]
--   White - [white_rs]
--   Sky Blue - [skyblue_rs]
--   Dark Sky Blue - [darkskyblue_rs]
-
------ EMERALD -----
--   White - [white_em]
--   Dark Gray - [darkgrey_em] (default)
--   Gray - [grey_em]
--   Red - [red_em]
--   Orange - [orange_em]
--   Green - [green_em]
--   Light Green - [lightgreen_em]
--   Blue - [blue_em]
--   Light Blue - [lightblue_em]
--   White 4 - [white4_em]
--   Lime Green- [limegreen_em]
--   Aqua - [aqua_em]
--   Navy - [navy_em]
+Example:
 ```
+#org @t3
+= [black_fr]It's my favourite instrument!
+
+#org @t2
+= [black_fr]How unfortunate!
+
+#org @t1
+= [black_fr]Do you play [green_fr]piano[black_fr]?
+```
+
+Some predefined color codes in Gen III Pokémon Games:
+-   Color Codes: [Pokémon Generation III ROM Hacking - Color Codes.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Color%20Codes.txt)
 
 Other codes mentioned:
 ```
@@ -246,8 +214,8 @@ givepokemon 0xPOKEMON 0xLEVEL 0xITEM 0x0 0x0 0x0
 ```
 The area with `POKEMON`, `LEVEL` and `ITEM` needs to be filled with hex number with the correlated Pokémon or item codes. Gen III codes are as below:
 
--   Pokémon Codes: [Pokémon Generation III ROM Hacking - Pokémon Values.txt]()
--   Item Codes: [Pokémon Generation III ROM Hacking - Item Values.txt]()
+-   Pokémon Codes: [Pokémon Generation III ROM Hacking - Pokémon Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Pokémon%20Values.txt)
+-   Item Codes: [Pokémon Generation III ROM Hacking - Item Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Item%20Values.txt)
 
 Here is an example of using the `givepokemon` command.
 ```
@@ -414,8 +382,8 @@ end
 Flag lists:
 -   FireRed Safe Flags: `0x200`-`0x2FF`.
 -   Safe Flag list for Ruby and Emerald cannot be found on the internet but see below `Unsafe Flags` when decided what to use.
--   Special Flags: [Pokémon Generation III ROM Hacking - Special Flags.txt](/docs/PokémonGenerationIIIROMHacking-SpecialFlags.txt)
--   Unsafe Flags: [Pokémon Generation III ROM Hacking - Unsafe Flags.txt](/docs/PokémonGenerationIIIROMHacking-UnsafeFlags.txt)
+-   Special Flags: [Pokémon Generation III ROM Hacking - Special Flags.txt](/docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Special%20Flags.txt)
+-   Unsafe Flags: [Pokémon Generation III ROM Hacking - Unsafe Flags.txt](/docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Unsafe%20Flags.txt)
 
 #### Fade Screen and Hide Sprite
 Command for screen fading is the following:
@@ -487,8 +455,9 @@ Script events are used to stop the player in his or her tracks and trigger a scr
 
 An example of this would be Professor Oak stopping us from going in to the tall grass:
 
-<img alt="Script Event Tile Placement" src="/docs/script-event-oak-example.png" width="200px" display="inline-block">
-<img alt="Script Event Inspector" src="/docs/script-event-oak-example-inspector.png" width="200px" display="inline-block">
+<img alt="Script Event Tile Placement" src="/docs/script-event-oak-example.png" width="200px">
+
+<img alt="Script Event Inspector" src="/docs/script-event-oak-example-inspector.png" width="200px">
 
 Every one of the safe variables will have initial value of `0x0`.
 
@@ -571,3 +540,92 @@ Other commands will be covered in a future tutorial.
 #### Objectives:
 -   Moving a Sprite
 -   Moving the Camera
+
+#### Moving a Sprite
+To Move a sprite, use the following command:
+```
+applymovement 0xPERSONEVENT @movement
+```
+This would linked the defined movement set to the targeted `Person Event`.
+
+```
+waitmovement 0xPERSONEVENT
+```
+This will make the script wait until the movement event specified has finished. Otherwise the script will continue to run along with the movements.
+
+Using `0x0` as the `Person Event` number will refer to whatever the most recent event number that was called.
+
+Example of an NPC moving back and forth and face downwards:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+applymovement 0x4 @m1
+waitmovement 0x0
+msgbox @t1 0x6
+release
+end
+
+$org @t1
+= I've finished moving.
+
+#org @m1
+#raw 0x12
+#raw 0x13
+#raw 0x13
+#raw 0x12
+#raw 0x0
+#raw 0xFE
+```
+
+`#raw 0xFE` must be used for the end of movement or the game will freeze.
+
+List of all movement values:
+-   Movement Values: [Pokémon Generation III ROM Hacking - Movement Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Movement%20Values.txt)
+
+
+#### Moving a Camera
+To apply special actions such as camera movements or camera shake effects, use the following command:
+```
+special 0xSPECIAL
+```
+Where `0xSPECIAL` refers to the particular special effect to apply.
+-   `0x113` - Detach Camera from the Player
+-   `0x114` - Attach Camera to the Player
+
+Use `0x7F` as `0xPERSONEVENT` for `applymovement` to move the camera instead of an NPC/Player.
+
+Example of detaching the camera from the player and move it around:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+special 0x113
+applymovement 0x7F @moveCameraUp
+waitmovement 0x0
+applymovement0xFF @movePlayer
+waitmovement 0x0
+applymovement 0x7F @moveCameraDown
+waitmovement 0x0
+special 0x114
+release
+end
+
+#org @movePlayer
+#raw 0x12
+#raw 0x13
+#raw 0xFE
+
+#org @moveCameraUp
+#raw 0x11
+#raw 0x11
+#raw 0xFE
+```
+
+Note that at any given time, the player can see 7 tiles to the left of Player, 7 tiles to the right, 5 and 1/2 upwards and 5 and 1/2 downwards.
+
+List of other special values:
+-   Special Values: [Pokémon Generation III ROM Hacking - Special Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Special%20Values.txt)
+

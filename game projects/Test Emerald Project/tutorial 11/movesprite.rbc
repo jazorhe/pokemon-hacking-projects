@@ -1,0 +1,20 @@
+#dynamic 0x800000
+
+#org @start
+lock
+applymovement 0x4 @m1
+waitmovement 0x0
+msgbox @t1 0x6
+release
+end
+
+$org @t1
+= I've finished moving.
+
+#org @m1
+#raw 0x12
+#raw 0x13
+#raw 0x13
+#raw 0x12
+#raw 0x0
+#raw 0xFE

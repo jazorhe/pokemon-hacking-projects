@@ -1,0 +1,24 @@
+special 0x0 - Heal Pokemon
+special 0x3C - Access Bill's PC (FR/LG)
+special 0x98 - Going up to Mountain (R/S)
+special 0x9C - Wally Catch (R/S)
+special 0x9F - choose A Pokemon (R/S)
+special 0xE0 - PokeBlock Case (R/S)
+special 0x10F - Restart Game
+special 0x110 - Hall of Fame and Credits
+special 0x111 - Elevator Animation
+special 0x119 - Groudon's Orb effect (R/S)
+special 0x131 - Earthquake (R/S)
+special 0x132 - Show Floors
+special 0x133 - Long Earthquake (Emerald)
+special 0x136 - Earthquake (FR/LG)
+special 0x137 - Lava Battle
+special 0x13D - Short Earthquake (Emerald)
+special 0x156 - Battle with Ghost (FR/LG)
+special 0x157 - Get on Bike (FR/LG)
+special 0x161 - Start Surfing (FR/LG)
+special 0x166 - Nickname
+special 0x16F - Activate National Dex (FR/LG)
+special 0x17B - Seagallop Animation
+special 0x191 - SS. Anne Leaving
+special 0x1F3 - Activate National Dex (Emerald)

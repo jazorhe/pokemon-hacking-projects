@@ -1,0 +1,24 @@
+#dynamic 0x800000
+
+#org @start
+lock
+special 0x113
+applymovement 0x7F @moveCameraUp
+waitmovement 0x0
+applymovement0xFF @movePlayer
+waitmovement 0x0
+applymovement 0x7F @moveCameraDown
+waitmovement 0x0
+special 0x114
+release
+end
+
+#org @movePlayer
+#raw 0x12
+#raw 0x13
+#raw 0xFE
+
+#org @moveCameraUp
+#raw 0x11
+#raw 0x11
+#raw 0xFE
