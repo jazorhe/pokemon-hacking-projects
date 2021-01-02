@@ -1,0 +1,26 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+spriteface 0x4 0x2
+pause 0x30
+setdooropened 0x10 0x0D
+doorchange
+applymovement 0x4 @m1
+waitmovement 0x0
+setflag 0x200
+pause 0x39
+setdoorclosed 0x10 0x0D
+doorchange
+release
+end
+
+#org @m1
+#raw 0x11
+#raw 0x60
+#raw 0xFE
+
+#org @t1
+= I'm in your way!

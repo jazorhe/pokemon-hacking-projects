@@ -25,7 +25,7 @@ Following [tutorials](https://www.youtube.com/watch?v=UgI35RdZvq4&list=PLfI5DBI4
 
 
 ### Tutorial 7: The Basics of Scripting (*[Video link](https://www.youtube.com/watch?v=wJw4tz0kcAI)*)
-#### Objectives:
+#### Objectives
 -   How does XSE work?
 -   Simple NPC Script
 -   Insert Script into the game
@@ -112,7 +112,7 @@ It is worth mentioning that *Emerald* is known with a lot less free space while 
 
 ### Tutorial 8: Msgbox Exhaustion (*[Video link](https://www.youtube.com/watch?v=cL9m4ZRasbc)*)
 
-#### Objectives:
+#### Objectives
 -   Long Strings
 -   Coloring Strings
 -   Formatting Dialogue Boxes
@@ -202,7 +202,7 @@ There are multiple pre-formatted dialogue boxes what defines the behaviour when 
 
 ### Tutorial 9: Exchanging Possessions (*[Video link](https://www.youtube.com/watch?v=H47rkg9sGzM)*)
 
-#### Objectives:
+#### Objectives
 -   Give the player a Pokémon
 -   Give the player an item
 -   Check if the player has a particular item
@@ -325,7 +325,7 @@ From the same example used above, we took the Potion away from the player after 
 
 ### Tutorial 10: History Never Repeats Itself (*[Video link](https://www.youtube.com/watch?v=II4_T3MCnLo)*)
 
-#### Objectives:
+#### Objectives
 -   Flags
 -   Fade Screen and Hide Sprite
 -   Variables
@@ -539,7 +539,7 @@ Other commands will be covered in a future tutorial.
 
 
 ### Tutorial 11: Mobility (*[Video link](https://www.youtube.com/watch?v=CukAvOWy8pU)*)
-#### Objectives:
+#### Objectives
 -   Moving a Sprite
 -   Moving the Camera
 
@@ -634,7 +634,7 @@ List of other special values:
 
 ### Tutorial 12: Instant Script Activation (*[Video link](https://www.youtube.com/watch?v=FttPQvAyWB4&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=13)*)
 
-#### Objectives:
+#### Objectives
 -   Level Script
 -   Decompiling a Script
 -   Activate Script Immediately
@@ -720,7 +720,7 @@ This script will run when player first enter the area. Then a type `03` script w
 
 
 ### Tutorial 13: Advice and Errata (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=14)*)
-#### Objectives:
+#### Objectives
 -   Copy and Past Map Tiles
 -   Text Adjustor
 -   Additional Commands
@@ -731,3 +731,111 @@ This script will run when player first enter the area. Then a type `03` script w
     -   `lockall` and `releaseall` is similar to `lock` and `release`, however, instead of locking and releasing the player, it does it to all NPCs in the map
 -   Mistakes
     -   `Script Event` related to tile elevated height ([at 05:45](https://www.youtube.com/watch?v=zKOkaRWfp1E&t=345s))
+
+
+### Tutorial 14: Hasta La Vista, Baby (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=15)*)
+
+#### Objectives
+-   Variations of Warp Commands
+-   Utilising Doors in Scripts
+
+#### Variations of Warp Commands
+<img alt="Warp Event Box" src="/docs/warp-event-box.png" width="200px">
+
+```
+warp 0xBANK 0xNUM 0xID 0xXPOS 0xYPOS
+```
+
+`0xID` refers to which particular `Warp Event` this warp action is linked to. If set to `0xFF` will allow `0xXPOS` and `0xYPOS` to be used. Otherwise the player will be warpped to the position specified in the `Warp Event`.
+
+Example:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+warp 0x0 0x6 0x8 0x0 0x0
+release
+end
+
+#org @t1
+= Time to WARP!
+```
+
+Additionally, the following commands warps the player muted:
+```
+warpmuted 0xBANK 0xNUM 0xID 0xXPOS 0xYPOS
+```
+
+The following command forces the player to step up 1 tile then warps the player:
+```
+warpwalk 0xBANK 0xNUM 0xID 0xXPOS 0xYPOS
+```
+This also takes care of door animation if there is a door 1 tile above the palyer.
+
+The following command simulates the palyer falling into a hole:
+```
+warphole 0xBANK 0xNUM
+```
+The player will be warpped to the exact same position from the previous map to the later map.
+
+The following command simulates a teleport animation:
+```
+warpteleport 0xBANK 0xNUM 0xID 0xXPOS 0xYPOS
+```
+
+
+The following command sets the warp place of a `Warp Event`, this is typically used in an elevator.
+```
+setwarpplace 0xBANK 0xNUM 0xID 0xXPOS 0xYPOS
+```
+Then in `Warp Event`, change default warp zone to `Bank` 127, `Num` 127 and `Id` 127. This will dynamically warp player to different zones based on the script results.
+
+Any action after a `Warp Event` cannot be continued form the original script, hence you can only do `release` and `end` after that. In order to continue the action, you need to have a `Map Script` with type `02` ready on the warp location map ready and take over the scene.
+
+
+#### Utilising Doors in Scripts
+To open a door using a script:
+```
+setdooropened 0xX 0xY
+doorchange
+```
+Where `0xX` and `0xY` is the position of which the door tile is at. The `setdooropened` opens the door and the `doorchange` animation does the animation.
+
+Similarly, to close a door:
+```
+setdoorclosed 0xX 0xY
+doorchange
+```
+
+Below is an example of an NPC walks into a door and disappears:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+spriteface 0x4 0x2
+pause 0x30
+setdooropened 0x10 0x0D
+doorchange
+applymovement 0x4 @m1
+waitmovement 0x0
+setflag 0x200
+pause 0x39
+setdoorclosed 0x10 0x0D
+doorchange
+release
+end
+
+#org @m1
+#raw 0x11
+#raw 0x60
+#raw 0xFE
+
+#org @t1
+= I'm in your way!
+```
