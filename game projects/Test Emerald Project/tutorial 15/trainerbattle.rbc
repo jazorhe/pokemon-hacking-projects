@@ -1,0 +1,18 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+trainerbattle 0x0 0x001 0x0 @introText @winText
+msgbox @alreadyDefeated 0x6
+release
+end
+
+#org @alreadyDefeatged
+= [black_fr]You already battled me!
+
+#org @winText
+= You won!
+
+#org @introText
+= [black_fr]This is a type 0x0 battle!

@@ -1,0 +1,24 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+checktrainerflag 0x001
+compare 0x800D 0x1
+if 0x1 goto @flagIsCleared
+msgbox @t2 0x6
+cleartrainerflag 0x001
+release
+end
+
+#org @flagIsCleared
+msgbox @t1 0x6
+settrainerflag 0x001
+release
+end
+
+#org @t2
+= You haven't yet defeated trainer 0x001! I'll clear his flag so it's an automatic win for you!
+
+#org @t1
+= You already defeated trainer 0x001! I'll have to set his flag so you can batttle him again!

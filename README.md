@@ -1,5 +1,12 @@
 # pokemon-hacking-projects
 
+## Tools
+-   [**XSE - eXtreme Script Editor**](https://github.com/Gamer2020/Unofficial_*XSE*/releases) by HackMew: known as "The best scripting tool for Gen III binary hacks."
+    -   [An *XSE* discussion post on PokéCommunity](https://www.pokecommunity.com/showthread.php?t=164276)
+-   [**HxD**](https://mh-nexus.de/en/downloads.php?product=HxD): A straightforward hex editor.
+-   [**AdvancedMap (1.92)**](http://ampage.no-ip.info/index.php?seite=home) by LU-HO: Map editor for Gen III binary hacks.
+-   [**Advance Trainer**](https://www.hackromtools.info/advance-trainer/): Trainer editor tool
+
 ## Contents:
 -   **Mapping**
     -   Tutorial 1
@@ -16,6 +23,7 @@
     -   [Tutorial 11: Mobility](#tutorial-11-mobility-video-link)
     -   [Tutorial 12: Instant Script Activation](#tutorial-12-instant-script-activation-video-link)
     -   [Tutorial 13: Advice and Errata](#tutorial-13-advice-and-errata-video-link)
+    -   [Tutorial 14: Hasta La Vista, Baby](#tutorial-14-hasta-la-vista-baby-video-link)
 
 ## Mapping:
 
@@ -31,11 +39,6 @@ Following [tutorials](https://www.youtube.com/watch?v=UgI35RdZvq4&list=PLfI5DBI4
 -   Insert Script into the game
 
 
-#### Tools
--   [**XSE - eXtreme Script Editor**](https://github.com/Gamer2020/Unofficial_*XSE*/releases) by HackMew: known as "The best scripting tool for Gen III binary hacks."
-    -   [An *XSE* discussion post on PokéCommunity](https://www.pokecommunity.com/showthread.php?t=164276)
--   [**HxD**](https://mh-nexus.de/en/downloads.php?product=HxD): A straightforward hex editor.
--   [**AdvancedMap (1.92)**](http://ampage.no-ip.info/index.php?seite=home) by LU-HO: Map editor for Gen III binary hacks.
 
 
 #### Start Scripting
@@ -839,3 +842,106 @@ end
 #org @t1
 = I'm in your way!
 ```
+
+### Tutorial 15: Trainerbattle Dissection (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=16)*)
+#### Objectives
+-   Advanced Trainer
+-   Navigating Advanced Trainer
+-   Types of Trainer Battles
+-   Initiating Trainer Battles
+
+#### Advance Trainer
+<img alt="Advanced Trainer" src="/docs/advanced-trainer.png" width="600px">
+
+-   The `Unknown` field represents the `Intellegence Level` or the trainer, but it does not necessarily mean a higher value is stronger. See [Pokémon Generation III ROM Hacking - Trainer AI Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Trainer%20AI%20Values.txt) for more information.
+
+-   Pokémon Data
+<img alt="Advanced Trainer Pokémon" src="/docs/advanced-trainer-pokemon.png" width="600px">
+
+    -   Repoint Data
+
+
+#### Initiating Trainer Battles
+To initiate a trainer battle, use the following command:
+```
+trainerbattle 0xTYPE 0xTRAINER 0x0 @introText @winText
+```
+
+`0xTYPE` declares the type of trainer battle. Here are the most used types:
+-   `0x0` - Most basic type of trainer battle
+-   `0x1` - Same as `0x0` except right coming out of the battle, the script will continue to run and an extra pointer `@continue` is needed for the `trainerbattle` command.
+-   More types are available but they are rarely used:
+<img alt="Trainer Battle Types" src="/docs/trainer-battle-types.png" width="600px">
+
+
+`0XTRAINER` is the trainer ID displayed in *Advanced Trainer*.
+
+The third parameter can be left at `0x0`.
+
+Example of initiating an NPC trainer battle:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+trainerbattle 0x0 0x001 0x0 @introText @winText
+msgbox @alreadyDefeated 0x6
+release
+end
+
+#org @alreadyDefeatged
+= [black_fr]You already battled me!
+
+#org @winText
+= You won!
+
+#org @introText
+= [black_fr]This is a type 0x0 battle!
+```
+
+
+In order to have the NPC trainer to spot the palyer and initiate a battlem, check the `Trainer` checkbox and adjust the `View Radius` value (use with care, NPC may spot player through a wall and walk through the wall to start a battle depending on which Movement type the NPC has).
+
+To check if the trainer was already defeated, if so, this stores `0x1` into `LASTRESULT`
+```
+checktrainerflag 0xNUM
+```
+
+If a trainer has been defeated, its flag will be cleared. In other words, if the flag of a trainer has been set, we can still battle the trainer.
+```
+settrainerflag 0xNUM
+cleartrainerflag 0xNUM
+```
+
+Example of the use of the above three commands and making an NPC re-battle-able:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+checktrainerflag 0x001
+compare 0x800D 0x1
+if 0x1 goto @flagIsCleared
+msgbox @t2 0x6
+cleartrainerflag 0x001
+release
+end
+
+#org @flagIsCleared
+msgbox @t1 0x6
+settrainerflag 0x001
+release
+end
+
+#org @t2
+= You haven't yet defeated trainer 0x001! I'll clear his flag so it's an automatic win for you!
+
+#org @t1
+= You already defeated trainer 0x001! I'll have to set his flag so you can batttle him again!
+```
+
+
+### Tutorial 16: Trainerbattle Dissection (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=17)*)
+#### Objectives
