@@ -1,0 +1,25 @@
+--- FIRE RED ---
+0x01 CUT (grass)? (black Pokémon bar + leaf spiral) I can confirm.
+0x02 CUT
+0x03 Part of the FLY animation sequence.
+0x06 Part of the FLY animation sequence.
+0x08 Buggy SURF-Pokémon sprite appears on map
+0x09 SURF
+0x19 PokeCenter healing machine
+0x1E Part of the FLY animation sequence. (takeoff)
+0x1F Part of the FLY animation sequence. Calls animation 0x3B.
+0x20 Part of the FLY animation sequence.
+0x22 Landing (after FLY)
+0x23 FLY (crashes, probably because destination isn't set)
+0x25 ROCK SMASH
+0x26 TELEPORT? (black Pokémon bar)
+0x28 STRENGTH
+0x2B WATERFALL
+0x2C DIVE (crashes, probably because destination/directionality isn't set)
+0x2D Shows a buggy message box in the top-left corner
+0x33 SWEET SCENT? I can confirm.
+0x3B Part of the FLY animation sequence.
+0x3E Hall of Fame registration machine
+0x3F Teleports to player's home? Teleports to the flying spot for the sethealingplace map.
+0x41 VS SEEKER (crashes)
+0x45 White flash

@@ -1,0 +1,23 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+checkpcitem 0x8B 0x5
+compare 0x800D 0x1
+if 0x1 goto @hasAtLeastFive
+addpcitem 0x8B 0x5
+msgbox @t1 0x6
+release
+end
+
+#org @hasAtLeastFive
+msgbox @t2 0x6
+release
+end
+
+#org @t2
+= Good job keeping up with your berry picking!
+
+#org @t1
+= You didn't have at least five Oran Berries in the PC, so I gave you some more!

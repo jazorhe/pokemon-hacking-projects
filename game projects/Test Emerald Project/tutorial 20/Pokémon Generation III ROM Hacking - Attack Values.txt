@@ -1,0 +1,353 @@
+001 Pound
+002 Karate Chop
+003 DoubleSlap
+004 Comet Punch 
+005 Mega Punch
+006 Pay Day
+007 Fire Punch
+008 Ice Punch
+009 ThunderPunch
+00A Scratch
+00B ViceGrip
+00C Guillotine
+00D Razor Wind
+00E Swords Dance
+00F Cut
+010 Gust
+011 Wing Attack
+012 Whirlwind
+013 Fly
+014 Bind
+015 Slam
+016 Vine Whip
+017 Stomp
+018 Double Kick
+019 Mega Kick
+01A Jump Kick
+01B Rolling Kick
+01C Sand-Attack
+01D Headbutt
+01E Horn Attack
+01F Fury Attack
+020 Horn Drill
+021 Tackle
+022 Body Slam
+023 Wrap
+024 Take Down
+025 Thrash
+026 Double-Edge
+027 Tail Whip
+028 Poison Sting
+029 Twineedle
+02A Pin Missile
+02B Leer
+02C Bite
+02D Growl
+02E Roar
+02F Sing
+030 Supersonic
+031 SonicBoom
+032 Disable
+033 Acid
+034 Ember
+035 Flamethrower
+036 Mist
+037 Water Gun
+038 Hydro Pump
+039 Surf
+03A Ice Beam
+03B Blizzard
+03C Psybeam
+03D BubbleBeam
+03E Aurora Beam
+03F Hyper Beam
+040 Peck
+041 Drill Peck
+042 Submission
+043 Low Kick
+044 Counter
+045 Seismic Toss
+046 Strength
+047 Absorb
+048 Mega Drain
+049 Leech Seed
+04A Growth
+04B Razor Leaf
+04C SolarBeam
+04D PoisonPowder
+04E Stun Spore
+04F Sleep Powder
+050 Petal Dance
+051 String Shot
+052 Dragon Rage
+053 Fire Spin
+054 ThunderShock
+055 Thunderbolt
+056 Thunder Wave
+057 Thunder
+058 Rock Throw
+059 Earthquake
+05A Fissure
+05B Dig
+05C Toxic
+05D Confusion
+05E Psychic
+05F Hypnosis
+060 Meditate
+061 Agility
+062 Quick Attack
+063 Rage
+064 Teleport
+065 Night Shade
+066 Mimic
+067 Screech
+068 Double Team
+069 Recover
+06A Harden
+06B Minimize
+06C SmokeScreen
+06D Confuse Ray
+06E Withdraw
+06F Defense Curl
+070 Barrier
+071 Light Screen
+072 Haze
+073 Reflect
+074 Focus Energy
+075 Bide
+076 Metronome
+077 Mirror Move
+078 Selfdestruct
+079 Egg Bomb
+07A Lick
+07B Smog
+07C Sludge
+07D Bone Club
+07E Fire Blast
+07F Waterfall
+080 Clamp
+081 Swift
+082 Skull Bash
+083 Spike Cannon
+084 Constrict
+085 Amnesia
+086 Kinesis
+087 Softboiled
+088 Hi Jump Kick
+089 Glare
+08A Dream Eater
+08B Poison Gas
+08C Barrage
+08D Leech Life
+08E Lovely Kiss
+08F Sky Attack
+090 Transform
+091 Bubble
+092 Dizzy Punch
+093 Spore
+094 Flash
+095 Psywave
+096 Splash
+097 Acid Armor
+098 Crabhammer
+099 Explosion
+09A Fury Swipes
+09B Bonemerang
+09C Rest
+09D Rock Slide
+09E Hyper Fang
+09F Sharpen
+0A0 Conversion
+0A1 Tri Attack
+0A2 Super Fang
+0A3 Slash
+0A4 Substitute
+0A5 Struggle
+0A6 Sketch
+0A7 Triple Kick
+0A8 Thief
+0A9 Spider Web
+0AA Mind Reader
+0AB Nightmare
+0AC Flame Wheel
+0AD Snore
+0AE Curse
+0AF Flail
+0B0 Conversion 2
+0B1 Aeroblast
+0B2 Cotton Spore
+0B3 Reversal
+0B4 Spite
+0B5 Powder Snow
+0B6 Protect
+0B7 Mach Punch
+0B8 Scary Face
+0B9 Faint Attack
+0BA Sweet Kiss
+0BB Belly Drum
+0BC Sludge Bomb
+0BD Mud-Slap
+0BE Octazooka
+0BF Spikes
+0C0 Zap Cannon
+0C1 Foresight
+0C2 Destiny Bond
+0C3 Perish Song
+0C4 Icy Wind
+0C5 Detect
+0C6 Bone Rush
+0C7 Lock-On
+0C8 Outrage
+0C9 Sandstorm
+0CA Giga Drain
+0CB Endure
+0CC Charm
+0CD Rollout
+0CE False Swipe
+0CF Swagger
+0D0 Milk Drink
+0D1 Spark
+0D2 Fury Cutter
+0D3 Steel Wing
+0D4 Mean Look
+0D5 Attract
+0D6 Sleep Talk
+0D7 Heal Bell
+0D8 Return
+0D9 Present
+0DA Frustration
+0DB Safeguard
+0DC Pain Split
+0DD Sacred Fire
+0DE Magnitude
+0DF DynamicPunch
+0E0 Megahorn
+0E1 DragonBreath
+0E2 Baton Pass
+0E3 Encore
+0E4 Pursuit
+0E5 Rapid Spin
+0E6 Sweet Scent
+0E7 Iron Tail
+0E8 Metal Claw
+0E9 Vital Throw
+0EA Morning Sun
+0EB Synthesis
+0EC Moonlight
+0ED Hidden Power
+0EE Cross Chop
+0EF Twister
+0F0 Rain Dance
+0F1 Sunny Day
+0F2 Crunch
+0F3 Mirror Coat
+0F4 Psych Up
+0F5 ExtremeSpeed
+0F6 AncientPower
+0F7 Shadow Ball
+0F8 Future Sight
+0F9 Rock Smash
+0FA Whirlpool
+0FB Beat Up
+0FC Fake Out
+0FD Uproar
+0FE Stockpile
+0FF Spit Up
+100 Swallow
+101 Heat Wave
+102 Hail
+103 Torment
+104 Flatter
+105 Will-O-Wisp
+106 Memento
+107 Facade
+108 Focus Punch
+109 SmellingSalt
+10A Follow Me
+10B Nature Power
+10C Charge
+10D Taunt
+10E Helping Hand
+10F Trick
+110 Role Play
+111 Wish
+112 Assist
+113 Ingrain
+114 Superpower
+115 Magic Coat
+116 Recycle
+117 Revenge
+118 Brick Break
+119 Yawn
+11A Knock Off
+11B Endeavor
+11C Eruption
+11D Skill Swap
+11E Imprison
+11F Refresh
+120 Grudge
+121 Snatch
+122 Secret Power
+123 Dive
+124 Arm Thrust
+125 Camouflage
+126 Tail Glow
+127 Luster Purge
+128 Mist Ball
+129 FeatherDance
+12A Teeter Dance
+12B Blaze Kick
+12C Mud Sport
+12D Ice Ball
+12E Needle Arm
+12F Slack Off
+130 Hyper Voice
+131 Poison Fang
+132 Crush Claw
+133 Blast Burn
+134 Hydro Cannon
+135 Meteor Mash
+136 Astonish
+137 Weather Ball
+138 Aromatherapy
+139 Fake Tears
+13A Air Cutter
+13B Overheat
+13C Odor Sleuth
+13D Rock Tomb
+13E Silver Wind
+13F Metal Sound
+140 GrassWhistle
+141 Tickle
+142 Cosmic Power
+143 Water Spout
+144 Signal Beam
+145 Shadow Punch
+146 Extrasensory
+147 Sky Uppercut
+148 Sand Tomb
+149 Sheer Cold
+14A Muddy Water
+14B Bullet Seed
+14C Aerial Ace
+14D Icicle Spear
+14E Iron Defense
+14F Block
+150 Howl
+151 Dragon Claw
+152 Frenzy Plant
+153 Bulk Up
+154 Bounce
+155 Mud Shot
+156 Poison Tail
+157 Covet
+158 Volt Tackle
+159 Magical Leaf
+15A Water Sport
+15B Calm Mind
+15C Leaf Blade
+15D Dragon Dance
+15E Rock Blast
+15F Shock Wave
+160 Water Pulse
+161 Doom Desire

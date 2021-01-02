@@ -249,6 +249,16 @@ The command to give the player an item is the following:
 ```
 giveitem 0xITEM 0xQUANTITY TYPE_OF_MSG
 ```
+This command will show a congratulating message and sound effect upon receiving the item. If you do not wish to have a congratualtory message, use:
+```
+additem 0xITEM 0xQUANTITY
+```
+
+If might also be a good idea to check if the player has enough room in the bag to receive the item:
+```
+checkitemroom 0xITEM 0xQUANTITY
+```
+If so `LASTRESULT` will store `0x1`, otherwise it will store `0x0`.
 
 Example as following:
 ```
@@ -1571,3 +1581,179 @@ end
 #org @t1
 = [black_fr]Here's a [red_fr]Charmander[black_fr]!
 ```
+
+### Tutorial 20: Advice and Errata (3) (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=21)*)
+#### Objectives
+-   Extra Commands
+    -   `call` and `return`
+        ```
+        #dynamic 0x800000
+
+        #org @start
+        lock
+        faceplayer
+        msgbox @t1 0x5
+        compare 0x800D 0x1
+        if 0x1 call @bulbasaur
+        compare 0x800D 0x0
+        if 0x0 call @cahrmander
+        msgbox @t2 0x6
+        release
+        end
+
+        #org @bulbasaur
+        givepokemon 0x001 0x5 0x0 0x0 0x0 0x0
+        return
+
+        #org @charmander
+        givepokemon 0x004 0x5 0x0 0x0 0x0 0x0
+        return
+
+        #org @t2
+        = That's a good choice!
+
+        #org @t1
+        = YES <--> BULBASAUR\nNO <--> CHARMANDER
+        ```
+    -   `addpcitem` and `checkpcitem`, can be used at the start of the game to give the player some extra items.
+        ```
+        #dynamic 0x800000
+
+        #org @start
+        lock
+        faceplayer
+        checkpcitem 0x8B 0x5
+        compare 0x800D 0x1
+        if 0x1 goto @hasAtLeastFive
+        addpcitem 0x8B 0x5
+        msgbox @t1 0x6
+        release
+        end
+
+        #org @hasAtLeastFive
+        msgbox @t2 0x6
+        release
+        end
+
+        #org @t2
+        = Good job keeping up with your berry picking!
+
+        #org @t1
+        = You didn't have at least five Oran Berries in the PC, so I gave you some more!
+        ```
+    -   `checkattack` checks if at least one Pokémon in the party knows the specified attack. If so, it stores the slot of Pokémon which knows the attack to `LASTRESULT` (from `0x0` to `0x5`).
+        -   [Pokémon Generation III ROM Hacking - Attack Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Attack%20Values.txt)
+    -   `setflag 0x829` Activates PokéDex
+    -   `special 0x16F` Activates National Dex, for Emeral use `0x1F3`. For Ruby **ONLY**:
+            ```
+            writebytetooffset 0x2 0x2026B00
+            writebytetooffset 0x3 0x2026B01
+            writebytetooffset 0xDA 0x2024EBE
+            writebytetooffset 0x67 0x2026A5A
+            ```
+
+-   Script Strategies
+    -   Multiple Scripts that are Mostly the same
+    -   (**Fire Red Only**)Mark Pokémon as seen using `special 0x163`, where `setvar 0x8004 0xPOKEMON`:
+        ```
+        #dynamic 0x800000
+
+        #org @start
+        lock
+        setvar 0x8004 0x97
+        special 0x163
+        release
+        end
+        ```
+    -   There are 3 `Hidden` Movement types and **ONLY** use the one close to the bottom of the list, otherwise the game will freeze.
+    -   One time NPC that does not have a flag: we here set NPC to `Hidden`, then place him 1 tile above the door so we will never be able to bump into him. Then we implement the scene. At the end, we need to hide the sprite again and make sure to move him away out of bound so the player is never able to bump into him again:
+        ```
+        #dynamic 0x800000
+
+        #org @start
+        lock
+        spriteface 0xFF 0x2
+        pause 0x30
+        applymovement 0xA @m1
+        waitmovement 0x0
+        setdooropened 0x24 0x13
+        doorchange
+        applymovement 0xA @m2
+        applymovement 0xFF @m3
+        waitmovement 0x0
+        setdoorclosed 0x24 x013
+        doorchange msgbox @t1 x06
+        applymovement 0xA @m4
+        waitmovement 0x0
+        setvar 0x4011 0x1
+        release
+        end
+
+        #org @m4
+        #raw 0x10
+        #raw 0x10
+        #raw 0x10
+        #raw 0x10
+        #raw 0x10
+        #raw 0x10
+        #raw 0x60 'hide sprite
+        #raw 0x20
+        #raw 0x20
+        #raw 0x20
+        #raw 0x20
+        #raw 0x20
+        #raw 0x20
+        #raw 0x20
+        #raw 0xFE
+
+        #org @t1
+        = [blue_fr]Trainer[black_fr]: This is usually the part\nwhere I saysomething important or\lchallenging, but meh.
+
+        #org @m3
+        #raw 0x12
+        #raw 0x03
+        #raw 0xFE
+
+        #org @m2
+        #raw 0x61
+        #raw 0x10
+        #raw 0x02
+        #raw 0xFE
+
+        #org @m1
+        #raw 0x10
+        #raw 0xFE
+        ```
+
+### Tutorial 21: Advice and Errata (4) (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=22)*)
+#### Objectives
+-   Additional Commands
+    -   Buffer:
+        -   `bufferpokemon 0xVAR_MINUS_2 0xPOKEMON`: refer to sotred message using `\v\hVAR`
+        -   `bufferfirstpokemon 0xVAR_MINUS_2`
+        -   ...
+    -   `comparevars 0xVAR1 0xVAR2`:
+        ```
+        #dynamic 0x800000
+
+        #org @start
+        comparevars 0x800D 0x8004
+        if 0x1 call @same
+        end
+
+        #org @same
+        addvar 0x8004 0x1
+        end
+        ```
+    -   `nop` does nothing.
+    -   `callasm`, ASM routines will be talked about in future tutorials.
+    -   `getplayerpos 0xVAR1 0xVAR2`: retrives the X and Y pos of player and stores in `Var1` and `Var2` respectively.
+    -   `setcatchlocation 0xSLOT 0xLOCATION`: set Pokémon catch location
+        -   [Pokémon Generation III ROM Hacking - Catch Location Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Catch%20Location%20Values.txt)
+    -   `setanimation 0xANI 0xSLOT`, `doanimation 0xANI` and `checkanimation 0xANI`: used for special moves performed by a Pokémon member in the team. `checkanimation` will check if the animation is being played and wait for it to finish.
+        -   [Pokémon Generation III ROM Hacking - Field Animation Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Field%20Animation%20Values.txt)
+
+
+-   Scripting Strategies
+    -   Type `09` Battle. If the player loses this battle, he/she will not be sent back to the spawn location. However, you will get Professor Oak's Dialogue every time you make a move.
+    -   To have a battle that the player will definitely lose, you can set the flag of the NPC right before the battle begins. That way when the Player loses and is sent back to a Pokémon center, the map will be reset and we could use a  type `03` Level Script to check this flag and dynamically change the layout of the map.

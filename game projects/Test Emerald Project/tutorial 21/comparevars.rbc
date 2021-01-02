@@ -1,0 +1,10 @@
+#dynamic 0x800000
+
+#org @start
+comparevars 0x800D 0x8004
+if 0x1 call @same
+end
+
+#org @same
+addvar 0x8004 0x1
+end

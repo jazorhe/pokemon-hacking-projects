@@ -1,0 +1,27 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x5
+compare 0x800D 0x1
+if 0x1 call @bulbasaur
+compare 0x800D 0x0
+if 0x0 call @cahrmander
+msgbox @t2 0x6
+release
+end
+
+#org @bulbasaur
+givepokemon 0x001 0x5 0x0 0x0 0x0 0x0
+return
+
+#org @charmander
+givepokemon 0x004 0x5 0x0 0x0 0x0 0x0
+return
+
+#org @t2
+= That's a good choice!
+
+#org @t1
+= YES <--> BULBASAUR\nNO <--> CHARMANDER
