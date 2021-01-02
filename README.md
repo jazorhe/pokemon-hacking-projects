@@ -25,7 +25,7 @@
     -   [Tutorial 10: History Never Repeats Itself](#tutorial-10-history-never-repeats-itself-video-link)
     -   [Tutorial 11: Mobility](#tutorial-11-mobility-video-link)
     -   [Tutorial 12: Instant Script Activation](#tutorial-12-instant-script-activation-video-link)
-    -   [Tutorial 13: Advice and Errata](#tutorial-13-advice-and-errata-video-link)
+    -   [Tutorial 13: Advice and Errata (2)](#tutorial-13-advice-and-errata-2-video-link)
     -   [Tutorial 14: Hasta La Vista, Baby](#tutorial-14-hasta-la-vista-baby-video-link)
     -   [Tutorial 15: Trainerbattle Dissection](#tutorial-15-trainerbattle-dissection-video-link)
     -   [Tutorial 16: Dynamic Mapping](#tutorial-16-dynamic-mapping-video-link)
@@ -38,9 +38,10 @@
     -   Tutorial 22: Hex Maniac
     -   Tutorial 23: Battle Sprite Replacement
     -   Tutorial 24: Overworld Sprite Management | PART 1
-    -   Tutorial 25: Overworld Sprite Management | PART 2
-    -   Tutorial 26: Cry Editing
-    -   Tutorial 27: Hexadecimal Palette Manipulation
+    -   Tutorial 24: Overworld Sprite Management | PART 2
+    -   Tutorial 25: Cry Editing
+    -   Tutorial 26: Hexadecimal Palette Manipulation
+    -   Tutorial 27: Custom Music Insertion
 
 ## Mapping:
 
@@ -749,7 +750,7 @@ This script will run when player first enter the area. Then a type `03` script w
 -   Type `05` and `07` are hardly ever used.
 
 
-### Tutorial 13: Advice and Errata (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=14)*)
+### Tutorial 13: Advice and Errata (2) (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=14)*)
 #### Objectives
 -   Copy and Past Map Tiles
 -   Text Adjustor
@@ -1407,6 +1408,7 @@ In addition, on can also play a sound effect using:
 ```
 sound 0xSOUND
 ```
+-   [Pokémon Generation III ROM Hacking - Song Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Song%20Values.txt)
 -   [Pokémon Generation III ROM Hacking - Sound Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Sound%20Values.txt)
 
 
@@ -1772,3 +1774,34 @@ end
 -   Scripting Strategies
     -   Type `09` Battle. If the player loses this battle, he/she will not be sent back to the spawn location. However, you will get Professor Oak's Dialogue every time you make a move.
     -   To have a battle that the player will definitely lose, you can set the flag of the NPC right before the battle begins. That way when the Player loses and is sent back to a Pokémon center, the map will be reset and we could use a  type `03` Level Script to check this flag and dynamically change the layout of the map.
+
+## Misc.
+-   Tutorial 22: Hex Maniac (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=24)*)
+    -   [DS-style Gen I - V Pokémon battle sprites](https://www.pokecommunity.com/showthread.php?t=267728)
+    -   [DS-style Gen VI Pokémon battle sprites](https://www.pokecommunity.com/showthread.php?t=314422)
+    -   [FireRed unLZ values](https://www.pokecommunity.com/showthread.php?t=129606)
+    -   [Emerald unLZ values](https://www.pokecommunity.com/showthread.php?t=241777)
+    -   [Gen IV - V Pokémon icon sprites](https://www.pokecommunity.com/showthread.php?t=324425)
+
+-   Tutorial 23: Battle Sprite Replacement (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=25)*)
+    -   [unLZ-GBA](https://www.romhacking.net/utilities/362/)
+
+-   Tutorial 24: Overworld Sprite Management | PART 1 (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=26)*)
+    -   [Overworld Manager](https://github.com/kimwnasptd/OWM-Qt)
+
+-   Tutorial 24: Overworld Sprite Management | PART 2 (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=27)*)
+    -   [Dynamic Overworld Palettes patch (FR ONLY)](https://www.pokecommunity.com/showthread.php?t=359685)
+    -   [GitHub](https://github.com/Navenatox/DynamicOverworldPalettes)
+
+-   Tutorial 25: Cry Editing (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=28)*)
+    -   [Cry Editor](https://github.com/erandis-vol/Cry-Editor/releases/tag/v1.4)
+    -   [Gen I - VII Cries](https://www.pokecommunity.com/showthread.php?t=390701)
+
+-   Tutorial 26: Hexadecimal Palette Manipulation (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=29)*)
+    -   [Advanced Palette Editor](https://www.romhacking.net/utilities/541/)
+
+-   Tutorial 27: Custom Music Insertion (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=30)*)
+    -   [Sappy Bug  Resolve](https://feuniverse.us/t/sappy-working-version/153)
+    -   [SappyMid2Agb](https://www.dropbox.com/sh/723s9jdkfkx7pwa/AABrXCMghyx2f74fme6iDoTEa?dl=0)
+    -   [Sappy 2006 mod 15](https://www.dropbox.com/s/zybsqcwurrn3x01/sappy2006mod15.zip?dl=0)
+    -   [Free Game Music in MIDI](vgmusic.com)
