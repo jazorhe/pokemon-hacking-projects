@@ -6,6 +6,8 @@
 -   [**HxD**](https://mh-nexus.de/en/downloads.php?product=HxD): A straightforward hex editor.
 -   [**AdvancedMap (1.92)**](http://ampage.no-ip.info/index.php?seite=home) by LU-HO: Map editor for Gen III binary hacks.
 -   [**Advance Trainer**](https://www.hackromtools.info/advance-trainer/): Trainer editor tool
+-   [**Sappy 2006**](https://www.hackromtools.info/sappy-mid2agb/): A Music Editor for select GBA games
+
 
 ## Contents:
 -   **Mapping**
@@ -1030,7 +1032,7 @@ end
 ```
 
 #### Manipulating the Weather
-In *Advanced Map* under `Header` > `Map Options`, there is a `Weather` dropbox which sets the default weather for the map.
+In *Advanced Map* under `Header` > `Map Options`, there is a `Weather` dropdown box which sets the default weather for the map.
 
 To change the weather condition through a script, use:
 ```
@@ -1258,3 +1260,126 @@ end
 
 Here is a list of special characters:
 -   [Pokémon Generation III ROM Hacking - Symbol Hex Codes.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Symbol%20Hex%20Codes.txt)
+
+
+### Tutorial 18: Battle Boom Box (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=19)*)
+#### Objectives
+-   Initiating Wild Pokémon Battle
+-   Utilising Sound Commands
+
+#### Initiating Wild Pokémon Battle
+```
+cry 0xPOKEMON 0x0
+waitcry
+```
+
+Example:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+cry 0x7 0x0
+waitcry
+wildbattle 0x7 0x5 0x0
+release
+end
+```
+
+#### Utilising Sound Commands
+In *Advanced Map* under `Header` > `Map Options`, there is a `Music` dropdown box which sets the default music for the map.
+
+The following command will fadeout the currently playing song and fade in the speficied music:
+```
+fadesong 0xMUSIC
+```
+All music dexadecimal values can be found in the  `Music` dropdown box.
+
+If you would like the default music to be played, use:
+```
+fadedefault
+```
+
+Fading to the same song that is already playing will do nothing. If you wish to restart the playing music, use:
+```
+playsong 0xMUSIC 0x0
+```
+This command does not come with any fading effect. The second parameter must be `0x0`.
+
+
+Example of an NPC asking the player what music he/she would like to play:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x5
+compare 0x800D 0x1
+if 0x1 goto #playSkyPillar
+msgbox @t2 0x5
+compare 0x800D 0x1
+if 0x1 goto @playDefault
+mag box @t3 0x6
+releae
+end
+
+#org @playSkyPillar
+fadesong 0x0196
+release
+end
+
+#org @playDefault
+fadedefault
+release
+end
+
+#org @t3
+= Good bye!
+
+#org @t2
+= Play Littleroot Town's music?
+
+#org @t1
+= Play Sky Pillar's music?
+```
+
+Instead of looping the music, `fanfare` cuts off the current music and play a specific tone, then continues the original track. A common use case is fore healing Pokémons. To do so:
+```
+fanfare 0xFANFARE
+```
+
+Here is an example:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+compare 0x800D 0x1
+if 0x1 goto @heal
+release
+end
+
+#org @heal
+fanfare 0x100
+special 0x0
+waitfanfare
+msgbox @t2 0x6
+release
+end
+
+#org @t2
+= [black_fr]I've healed your party!
+
+#org @t1
+= [black_fr]Do you want your party healed?
+
+```
+
+In addition, on can also play a sound effect using:
+```
+sound 0xSOUND
+```
+-   [Pokémon Generation III ROM Hacking - Sound Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Sound%20Values.txt)

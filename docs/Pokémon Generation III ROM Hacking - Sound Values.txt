@@ -1,0 +1,210 @@
+0x0 - Blank Noise (Stops BGM, not other S.E.)
+0x1 - Use Item
+0x2 - Log onto PC
+0x3 - Turn off PC
+0x4 - Turn on PC
+0x5 - Click Noise
+0x6 - Open Menu
+0x7 - Wall Bump
+0x8 - Door Open
+0x9 - Exit Room
+0xA - Jump
+0xB - Bike Bell
+0xC - Loud Crash (Like dropping of a heavy object)
+0xD - Loud Crash (Higher pitch, and with echo)
+0xE - Loud Crash (3 in rapid sucession, with long echo)
+0xF - Low Pitch Pokeball Open
+0x10 - Pokeball Close
+0x11 - Flee S.E.
+0x12 - PokeCenter Door Open
+0x13 - Strange Noise (Like Water at the beginning, then like electricity)
+0x14 - Low Pitch crash
+0x15 - Super high pitch beep
+0x16 - Error / False sound
+0x17 - PokeCenter Pokeball Load up (Pokeballs being placed onto the heal machine.)
+0x18 - PokeCasino Reel Stop
+0x19 - Insert Coin into Machine
+0x1A - Buzz (False/fail at Casino)
+0x1B - EXP gauge
+0x1C - Hop (Like on an Acro Bike)
+0x1D - Lock / Break small rock?
+0x1E - Unlock
+0x1F - Strange Sound (Like a dor being locked, but different...)
+0x20 - Strange Sound (A singular version of the previous sound)
+0x21 - Crash sound (With echo)
+0x22 - Singular Metal attack Sound (Like when using steel wing, but singular)
+0x23 - Ice Break
+0x24 - Ice Crack
+0x25 - Falling
+0x26 - Strange Sound (Super Low Pitch Ice Break?)
+0x27 - Warp Away
+0x28 - Warp Return
+0x29 - Electricity?
+0x2A - Turn Winch (Like in Winona's Gym)
+0x2B - Truck Driving (Loop)
+0x2C - Truck Stoping
+0x2D - Truck Brake
+0x2E - Truck Open
+0x2F - Airplane Turbines
+0x30 - Save
+0x31 - Pokeball Bounce (Like in a trade)
+0x32 - Pokeball Bounce (Quieter)
+0x33 - Pokeball Bounce (Even Quieter)
+0x34 - Pokeball Bounce (Even Quieter Still)
+0x35 - Pokeball Open (Like in a trade)
+0x36 - Throw Pokeball
+0x37 - Musical Decoration Pad (Low C)
+0x38 - Musical Decoration Pad (D)
+0x39 - Musical Decoration Pad (E)
+0x3A - Musical Decoration Pad (F#)
+0x3B - Musical Decoration Pad (G)
+0x3C - Musical Decoration Pad (A)
+0x3D - Musical Decoration Pad (B)
+0x3E - Musical Decoration Pad (High C)
+0x3F - Mud Ball Smash
+0x40 - Wodden Board
+0x41 - Get Money
+0x42 - P.A. (Like when an elevator is done, or end of Safari Zone)
+0x43 - Water Baloon Pop (Low)
+0x44 - Water Baloon Pop (Med)
+0x45 - Water Baloon Pop (High)
+0x46 - Wodden Smash
+0x47 - Wooden Break
+0x48 - Poison Afliction
+0x49 - Conveyor Belt
+0x4A - Conveyor Belt 2 (Loop)
+0x4B - Conveyor Belt 2 (end)
+0x4C - Loud Noise (Like a low conveyor belt 2) (Loop)
+0x4D - Loud Noise (End)
+0x4E - Light noise (Like a High conveyor belt 2) (Loop)
+0x4F - Light Noise (End)
+0x50 - Strange Noise (Like sonething being absorbed into a dark void. Sound goes from high to low)
+0x51 - Strange Noise (Like an extension of hte previous sound. Sound goes from Low to Super Low)
+0x52 - Buzz (Like a Circular Saw)
+0x53 - Low Health Alert (Loop) (Can Not Be Turned Off Without Map Refresh)
+0x54 - Level Up Ding
+0x55 - Low Grumbling (Like a Diesel Engine) (Loop)
+0x56 - Low Grumbling (End)
+0x57 - Swipe Sound (Loop)
+0x58 - Sell Item
+0x59 - Low Ding (Like a really low "Low C" note)
+0x5A - High Pitch Swipe
+0x5B - High Pitch Swipe (Reverse)
+0x5C - Smack
+0x5D - Small Noise (Like a person kicking dirt)
+0x5E - VS Seeker?
+0x5F - Light Jingle
+0x60 - Explosion
+0x61 - Explosion (After Effect / Cont)
+0x62 - STRONG Wind (Or Crowd Screaming? My PC to slow to tell...)
+0x63 - Low Slamming sound (Like someone setting down a heavy box.)
+0x64 - Red / Blue Orb
+0x65 - Computer Chatter (One High Pitch Blip)
+0x66 - Computer Chatter (2 Blips, pattern: MedHi-High)
+0x67 - Computer Chatter (High Pitch PC on?)
+0x68 - Computer Chatter (High Pitch PC off?)
+0x69 - Computer Chatter (PC Scanning)
+0x6A - Glass Breaking?
+0x6B - Light Shuffle sound (Like feet sliding across the floor)
+0x6C - High Pitch Quiet Blip
+0x6D - Small Sound (Like a twig snaping)
+0x6E - Strange Sound (Like low pitch Ice Shimmering, or Use of Flute)
+0x6F - Loud Bang (Like a gun shot, but different)
+0x70 - Lout Buzz
+0x71 - Metal Sheen (Like on steel wing, but a little longer)
+0x72 - Curse Attack
+0x73 - Baton Pass Attack (Like a swipeing / falling sound)
+0x74 - Low Crash
+0x75 - Bubble Attack (Launch)
+0x76 - Substitute attack?
+0x77 - Watyer Gun Attack (Launch)
+0x78 - Rain Dance Attack
+0x79 - Slash Attack
+0x7A - Gust Attack?
+0x7B - Very Strange Sound (Like a downward Spiral?)
+0x7C - Rock Smash Attack? (In Battle or not? I Can't tell)
+0x7D - Powerful Wind (Loop)
+0x7E - Powerful Wind (End)
+0x7F - Pound Attack?
+0x80 - Throwing Sound (Like Bait in the Safari Zone)
+0x81 - Deep Slashing noise
+0x82 - Ice Ball Attack
+0x83 - Loud Swipe?
+0x84 - Deep Bang (Like someone hit something hard with a big log...)
+0x85 - Beam Attack Charge Sound. (Like Solar Beam's Charging sound)
+0x86 - Deep Bang (Similar to 0x84)
+0x87 - Bubbling Noise
+0x88 - Throwing noise (Slightly Higher Pitch)
+0x89 - VERY DEEP Throwing sound
+0x8A - Deep Explosion like sound
+0x8B - Deep Wave-like sound
+0x8C - Strange Sound (A Smack Noise, tehn a Short Deep Explosion-ish sound)
+0x8D - Deep Bubbling
+0x8E - Deep Crash (Like a super deep opening pokeball)
+0x8F - Deep Fire
+0x90 - Deep Smack
+0x91 - Low Whirling
+0x92 - High Pitch Powerful Wind (Loop)
+0x93 - High Pitch Powerful Wind (End)
+0x94 - High Pitch Shuffling
+0x95 - Loud Noise (No Explaination)
+0x96 - Wing Flapping (Singular)
+0x97 - Wing Flapping (Decending Octaves, High To Low)
+0x98 - Kicking Sand?
+0x99 - High Pitch Whips Sound
+0x9A - Strange Sound (No Explaination)
+0x9B - Whirling Upwards (Short....)
+0x9C - Super Strong Wind Burst
+0x9D - MEGA ULTRA Strong wind burst. (I think....)
+0x9E - MEGA ULTRA Strong wind burst. (Pitch Goes up, then down, more like actual wind...)
+0x9F - Small Noise (Like a twig breaking)
+0xA0 - Splash Attack Flopping sound (Singular)
+0xA1 - Sandpaper-ish?
+0xA2 - Small Noise (No Explaination)
+0xA3 - Stretching noise?
+0xA4 - Speeding up fan? (Pitch raises, that is all)
+0xA5 - Sing Attack
+0xA6 - Perish Song Attack
+0xA7 - Ice? (Souns like when a pokemon gets frozen...)
+0xA8 - Noise (No Explaination)
+0xA9 - Little Sound (No explaination...)
+0xAA - Loud Sound (No Explaination)
+0xAB - Explosion-ish Sound
+0xAC - Recover Attack
+0xAD - Absorb Smack (The sound before the absorbtion)
+0xAE - Metal Sound?
+0xAF - Aurora Beam (Small)
+0xB0 - Aurora Beam (Main)
+0xB1 - Confusion
+0xB2 - Drum?
+0xB3 - Amnesia "?" Appear
+0xB4 - Egg Crack?
+0xB5 - Amnesia (Deeper ? Sound)
+0xB6 - Loud Hover Sound (Decending)
+0xB7 - Loud Hover Sound (Acending)
+0xB8 - Strange Sound (Sounds like a speed up, then an upward whirling noise)
+0xB9 - Smack (With Echo)
+0xBA - Wooshing noise
+0xBB - Frustration "Angry" Symbols
+0xBC - Small Metalic "Bling" sound
+0xBD - Whisping noise
+0xBE - Rest Attack
+0xBF - Shattering Ice
+0xC0 - Deep Watery noise
+0xC1 - Strange Noise (No Explaination)
+0xC2 - Solar Beam (Launch)
+0xC3 - Sunny Day Attack
+0xC4 - Strange Noise (Sounds like a small absorption, but not from any absorb attacks...)
+0xC5 - Strange Noise (Previous sound, in reverse)
+0xC6 - Small Noise (No Explaination)
+0xC7 - Swift Attack (Singular - higher pitch)
+0xC8 - Swift Attack (Singular - Longer)
+0xC9 - Swift Attack (Singular - Lower Pitch)
+0xCA - Odor Sleuth Attack
+0xCB - Small Noise (Like a twig Snapping... again)
+0xCC - Strange noise (Like... Ding, Dong... Ding, Dong....)
+0xCD - Strange noise (Frustration "Angry" Symbols... highrt pitch)
+0xCE - Noise (Decending Sound)
+0xCF - Loud Crash (Very Deep)
+
+- List compiled by Omega Arsenal

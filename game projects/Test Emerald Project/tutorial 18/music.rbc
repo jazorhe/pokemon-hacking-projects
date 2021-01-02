@@ -1,0 +1,33 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x5
+compare 0x800D 0x1
+if 0x1 goto #playSkyPillar
+msgbox @t2 0x5
+compare 0x800D 0x1
+if 0x1 goto @playDefault
+mag box @t3 0x6
+releae
+end
+
+#org @playSkyPillar
+fadesong 0x0196
+release
+end
+
+#org @playDefault
+fadedefault
+release
+end
+
+#org @t3
+= Good bye!
+
+#org @t2
+= Play Littleroot Town's music?
+
+#org @t1
+= Play Sky Pillar's music?

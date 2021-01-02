@@ -1,0 +1,24 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+compare 0x800D 0x1
+if 0x1 goto @heal
+release
+end
+
+#org @heal
+fanfare 0x100
+special 0x0
+waitfanfare
+msgbox @t2 0x6
+release
+end
+
+#org @t2
+= [black_fr]I've healed your party!
+
+#org @t1
+= [black_fr]Do you want your party healed?
