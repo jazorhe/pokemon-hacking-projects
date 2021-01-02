@@ -1105,3 +1105,156 @@ Use this in a type `03` level script, and `doweather` is not required.
 
 ### Tutorial 17: Customer Service (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=18)*)
 #### Objectives
+-   Creating Custom PokéMart
+-   Currency System
+
+#### Creating Custom PokéMart
+To create a PokéMart for an NPC when speaking to him/her:
+```
+pokemart @inventory
+```
+
+An example of this would be:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+pokemart @inventory
+release
+end
+
+#org @inventory
+#raw word 0x0D
+#raw word 0x04
+#raw word 0x0E
+#raw word 0x00
+```
+
+-   Item Codes: [Pokémon Generation III ROM Hacking - Item Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Item%20Values.txt)
+
+Remember to use `0x00` to denote the end of the list. MUST!
+
+Note that the game expects the NPC to be in a PokéMart Building so when hitting `Buy`, sprites in the main map might appear weirdly. If you cannot seem to get pass this, might have to consider placing the NPC in a building.
+
+#### Currency System
+This command shows a text box with the current money held by the player:
+```
+showmoney 0xXPOS 0xYPOS 0x0
+```
+Where `0xXPOS` and `0xYPOS` declares the position of the box and the last value should remain `0x0`/.
+
+This will hide the money box:
+```
+hidemoney 0x0 0x0
+```
+
+This command checks if the player has the specified amount of cash:
+```
+checkmoney 0xAMOUNT 0x0
+```
+
+```
+paymoney 0xAMOUNT 0x0
+```
+
+```
+givemoney 0xAMOUNT 0x0
+```
+
+```
+updatemoney 0x0 0x0 0x0
+```
+
+Here is an example (I believe this can be simplified):
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x5
+compare 0x800D 0x1
+if 0x1 goto @viewInventory
+msgbox @t2 0x6
+release
+end
+
+#org @viewInventory
+showmoney 0x0 0x0 0x0
+msgbox @t3 0x5
+compare 0x800D 0x1
+if 0x1 goto @buyPotion
+msgbox @t4 0x5
+compare 0x800D 0x1
+if 0x1 goto @buy Anitdote
+hidemoney 0x0 0x0
+msgbox @t2 0x6
+release
+end
+
+#org @buyPotion
+msgbox @t5 0x6
+checkmoney 0x1F4 0x0
+compare 0x800D 0x1
+if 0x4 goto @hasEnough
+hidemoney 0x0 0x0
+msgbox @t2 0x6
+release
+end
+
+#org @buyAntidote
+msgbox @t7 0x6
+checkmoney 0x12C 0x0
+compare 0x800D 0x1
+if 0x4 goto @hasEnough2
+hidemoney 0x0 0x0
+msgbox @t2 0x6
+release
+end
+
+#org @hasEnough2
+paymoney ox12C 0x0
+updatemoney 0x0 0x0 0x0
+giveitem 0x0E 0x1 MSG_OBTAIN
+pause 0x30
+hidemoney 0x0 0x0
+msgbox @t6 0x6
+release
+end
+
+#org @hasEnough
+paymoney 0x1F4 0x0
+updatemoney 0x0 0x0 0x0
+giveitem 0x0D 0x1 MSG_OBTAIN
+pause 0x30
+hidemoney 0x0 0x0
+msgbox @t6 0x6
+release
+end
+
+#org @t7
+= [blue_fr]Merchant[black_fr]: That will be #300!
+
+#org @t6
+= [blue_fr]Merchant[black_fr]: Great! Have a nice day!
+
+#org @t5
+= [blue_fr]Merchant[black_fr]: That will $500.
+
+#org @t4
+= [blue_fr]Merchant[black_fr]: How about an Antidote?
+
+#org @t3
+= [blue_fr]Merchant[black_fr]: Care for a Potion?
+
+#org @t2
+= [blue_fr]Merchant[black_fr]: That's too bad.\nCome back soon!
+
+#org @t1
+= [blue_fr]Merchant[black_fr]: Hello! I'm a merchant.\nCould I interest you in some items?
+```
+
+Here is a list of special characters:
+-   [Pokémon Generation III ROM Hacking - Symbol Hex Codes.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Symbol%20Hex%20Codes.txt)

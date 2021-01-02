@@ -1,0 +1,14 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+pokemart @inventory
+release
+end
+
+#org @inventory
+#raw word 0x0D
+#raw word 0x04
+#raw word 0x0E
+#raw word 0x00

@@ -1,0 +1,85 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x5
+compare 0x800D 0x1
+if 0x1 goto @viewInventory
+msgbox @t2 0x6
+release
+end
+
+#org @viewInventory
+showmoney 0x0 0x0 0x0
+msgbox @t3 0x5
+compare 0x800D 0x1
+if 0x1 goto @buyPotion
+msgbox @t4 0x5
+compare 0x800D 0x1
+if 0x1 goto @buy Anitdote
+hidemoney 0x0 0x0
+msgbox @t2 0x6
+release
+end
+
+#org @buyPotion
+msgbox @t5 0x6
+checkmoney 0x1F4 0x0
+compare 0x800D 0x1
+if 0x4 goto @hasEnough
+hidemoney 0x0 0x0
+msgbox @t2 0x6
+release
+end
+
+#org @buyAntidote
+msgbox @t7 0x6
+checkmoney 0x12C 0x0
+compare 0x800D 0x1
+if 0x4 goto @hasEnough2
+hidemoney 0x0 0x0
+msgbox @t2 0x6
+release
+end
+
+#org @hasEnough2
+paymoney ox12C 0x0
+updatemoney 0x0 0x0 0x0
+giveitem 0x0E 0x1 MSG_OBTAIN
+pause 0x30
+hidemoney 0x0 0x0
+msgbox @t6 0x6
+release
+end
+
+#org @hasEnough
+paymoney 0x1F4 0x0
+updatemoney 0x0 0x0 0x0
+giveitem 0x0D 0x1 MSG_OBTAIN
+pause 0x30
+hidemoney 0x0 0x0
+msgbox @t6 0x6
+release
+end
+
+#org @t7
+= [blue_fr]Merchant[black_fr]: That will be \hB7300!
+
+#org @t6
+= [blue_fr]Merchant[black_fr]: Great! Have a nice day!
+
+#org @t5
+= [blue_fr]Merchant[black_fr]: That will \hB7500.
+
+#org @t4
+= [blue_fr]Merchant[black_fr]: How about an Antidote?
+
+#org @t3
+= [blue_fr]Merchant[black_fr]: Care for a Potion?
+
+#org @t2
+= [blue_fr]Merchant[black_fr]: That's too bad.\nCome back soon!
+
+#org @t1
+= [blue_fr]Merchant[black_fr]: Hello! I'm a merchant.\nCould I interest you in some items?
