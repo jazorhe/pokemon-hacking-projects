@@ -943,5 +943,165 @@ end
 ```
 
 
-### Tutorial 16: Trainerbattle Dissection (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=17)*)
+### Tutorial 16: Dynamic Mapping (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=17)*)
+#### Objectives
+-   Dynamically Changing a Tile On a Map
+-   Proper Use of Type `01` Level Script
+-   Manipulating the Weather
+-   Randomness in Scripts
+
+#### Dynamically Changing a Tile On a Map
+To set a tile on a map to a particular tile sprite:
+```
+setmaptile 0xXPOS 0xYPOS 0xTILE 0xMOVEMENT_PERM
+```
+
+`0xTILE` is the `Tile(Block) ID` of which the tile should change to, can be found in the *Block Editor* in *Advanced Map*.
+
+`0xMOVEMENT_PERM` is mostly seen to have `0x0` as passable and `0x1` as impassable.
+
+The following line refreshes the map and displays the changes:
+```
+special 0x91
+```
+The Hexadecimal value would be `0x8E` if hacking FireRed
+
+Example of changing 10 tiles on a map:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+pause 0x30
+setmaptil 0x02 0x07 0x0001 0x0
+setmaptil 0x03 0x07 0x0001 0x0
+setmaptil 0x04 0x07 0x0001 0x0
+setmaptil 0x05 0x07 0x0001 0x0
+setmaptil 0x06 0x07 0x0001 0x0
+setmaptil 0x06 0x06 0x0001 0x0
+setmaptil 0x07 0x06 0x0001 0x0
+setmaptil 0x08 0x06 0x0001 0x0
+setmaptil 0x09 0x06 0x0001 0x0
+setmaptil 0x0A 0x06 0x0001 0x0
+special 0x91
+pause 0x30
+msgbox @t2 0x6
+release
+end
+
+#org @t2
+= [darkgrey_em]Done!
+
+#org @t1
+= [darkgrey_em]Dis[green_em]app[red_em]ear[blue_em]!
+```
+
+However, these changes are not permanent to the Map.
+
+In order to do so, we need to utilise the type `01` `Map Script`/`Level Script`.
+
+#### Proper Use of Type `01` Level Script
+In order to correctly use type `01` Script, we need to create a flag to record if we have spoken to the NPC or not (or indicate the landscape has changed). In the `01 Map Script`, we perform a `checkflag` every time we enter the area and decide to change the tiles if the flag has been set.
+
+Example:
+```
+#dynamic 0x800000
+
+#org @start
+checkflag 0x200
+if 0x0 goto @notYet
+setmaptil 0x02 0x07 0x0001 0x0
+setmaptil 0x03 0x07 0x0001 0x0
+setmaptil 0x04 0x07 0x0001 0x0
+setmaptil 0x05 0x07 0x0001 0x0
+setmaptil 0x06 0x07 0x0001 0x0
+setmaptil 0x06 0x06 0x0001 0x0
+setmaptil 0x07 0x06 0x0001 0x0
+setmaptil 0x08 0x06 0x0001 0x0
+setmaptil 0x09 0x06 0x0001 0x0
+setmaptil 0x0A 0x06 0x0001 0x0
+special 0x91
+end
+
+#org @notYet
+end
+```
+
+#### Manipulating the Weather
+In *Advanced Map* under `Header` > `Map Options`, there is a `Weather` dropbox which sets the default weather for the map.
+
+To change the weather condition through a script, use:
+```
+setweather 0xWEATHER
+doweather
+```
+
+Values for `0xWEATHER`
+-   `0x0` - In House Weather
+-   `0x1` - Sunny Weather with Clouds in Water
+-   `0x2` - Regular Weather
+-   `0x3` - Rainy Weather
+-   `0x4` - Three Snow Flakes
+-   `0x5` - Rain with Thunder Storm
+-   `0x6` - Steady Mist
+-   `0x7` - Steady Snowing
+-   `0x8` - Sand Storm
+-   `0x9` - Mist from Top Right Corner
+-   `0xA` - Dense Bright Mist
+-   `0xB` - Cloudy
+-   `0xC` - Underground Flashes
+-   `0xD` - Heavy Rain with Thunder Storm
+-   `0xE` - Underwater Mist
+-   `0xF` - 0F ???
+
+Example of changing the weather to rain after talking to an NPC:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+setweather 0x3
+doweather
+release
+end
+
+#org @t1
+= Let's change the [red_em]wea[blue_em]the[green_em]r!
+```
+
+The following command resets the weather condition to default:
+```
+resetweather
+doweather
+```
+
+#### Randomness in Scripts
+```
+random 0xVAL
+```
+
+`0xVAL` is a dexadecimal value of how many outcomes may occur for the roll.
+
+An example of randomly changes the weather to rainy weather when entering a area:
+```
+#dynamic 0x800000
+
+#org @start
+random 0x05
+compare LASTRESULT 0x0
+if 0x1 goto @changeWeatherToRainy
+end
+
+#org @changeWeatherToRainy
+setweather 0x3
+end
+```
+Use this in a type `03` level script, and `doweather` is not required.
+
+
+### Tutorial 17: Customer Service (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=18)*)
 #### Objectives

@@ -1,0 +1,11 @@
+#dynamic 0x800000
+
+#org @start
+random 0x05
+compare LASTRESULT 0x0
+if 0x1 goto @changeWeatherToRainy
+end
+
+#org @changeWeatherToRainy
+setweather 0x3
+end

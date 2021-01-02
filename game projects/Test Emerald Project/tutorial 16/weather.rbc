@@ -1,0 +1,13 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+setweather 0x3
+doweather
+release
+end
+
+#org @t1
+= Let's change the [red_em]wea[blue_em]the[green_em]r!
