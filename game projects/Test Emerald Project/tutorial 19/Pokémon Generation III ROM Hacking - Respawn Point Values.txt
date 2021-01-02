@@ -1,0 +1,45 @@
+--- FIRE RED ---
+0x01 = Player's House
+0x02 = Viridian City
+0x03 = Pewter City
+0x04 = Cerulean City
+0x05 = Lavender Town
+0x06 = Vermilion City
+0x07 = Celadon City
+0x08 = Fuchsia City 
+0x09 = Cinnabar Island
+0x0A = Indigo Plateau/Pokemon League Entrance
+0x0B = Saffron City
+0x0C = Route 4/Mt. Moon Entrance
+0x0D = Route 10/Rock Tunnel Entrance
+0x0E = One Island
+0x0F = Two Island
+0x10 = Three Island
+0x11 = Four Island
+0x12 = Five Island
+0x13 = Seven Island
+0x14 = Six Island
+
+--- RUBY / EMERALD ---
+0x01 = Player's Room (male)
+0x02 = Player's Room (female)
+0x03 = Petalburg City
+0x04 = Slateport City
+0x05 = Mauville City
+0x06 = Rustboro City
+0x07 = Fortree City
+0x08 = Lilycove City
+0x09 = Mossdeep City
+0x0A = Sootopolis City
+0x0B = Ever Grande City (Victory Road)
+0x0C = Littleroot Town (left)
+0x0D = Littleroot Town (right)
+0x0E = Oldale Town
+0x0F = Dewford Town
+0x10 = Lavaridge Town
+0x11 = Fallarbor Town
+0x12 = Verdanturf Town
+0x13 = Pacifidlog Town
+0x14 = Ever Grande City (Pokemon League)
+0x15 = Southern Island
+0x16 = Battle Frontier

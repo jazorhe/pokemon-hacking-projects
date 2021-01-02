@@ -1383,3 +1383,191 @@ In addition, on can also play a sound effect using:
 sound 0xSOUND
 ```
 -   [Pokémon Generation III ROM Hacking - Sound Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Sound%20Values.txt)
+
+
+### Tutorial 19: Revamping Our Options (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=20)*)
+#### Objectives
+-   Spawn Points
+-   Utilising Multichoice Boxes
+-   Nickname for Pokémons
+
+
+#### Spawn Points
+To set a spawn point:
+```
+sethealingplace 0xPLACE
+```
+This will effectively send the player to this location when he/she loses a battle.
+
+Additionally, a PokéCenter typically uses both a type `03` and a type `05` `Level Script`. The `sethealingplace` command is used in the `03` script, however, there is usually another command used in the `05` script:
+```
+special 0x182
+```
+This value becomes `0x1A4` in Emerald, while Ruby does not have this command used in a PokéCenter. The reason for this command exists in all PokéCenter in all FireRed and Emerald games is unknown. So remember to add it in just to be safe.
+
+-   [Pokémon Generation III ROM Hacking - Respawn Point Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Respawn%20Point%20Values.txt)
+
+
+#### Utilising Multichoice Boxes
+The following command creates a multiple choice box for selection:
+```
+multichoice 0xXPOS 0xYPOS 0xLIST 0xCANCEL_ON_B
+```
+unfortunately, there is no way to create custom multiple choices, only a pre-defined list of choices are available.
+-   [Pokémon Generation III ROM Hacking - Multichoice Box Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Multichoice%20Box%20Values.txt)
+
+
+Example:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+multichoice 0x0 0x0 0x0F 0x0
+compare 0x800D 0x0
+if 0x1 goto @SLP
+compare 0x800D 0x1
+if 0x1 goto @PSN
+compare 0x800D 0x2
+if 0x1 goto @PAR
+compare 0x800D 0x3
+if 0x1 goto @BRN
+compare 0x800D 0x4
+if 0x1 goto @FRZ
+compare 0x800D 0x5
+if 0x1 goto @EXIT
+compare 0x800D 0x7F
+if 0x1goto @B_BUTTOn
+release
+end
+
+#org @B_BUTTON
+msgbox @t8 0x6
+release
+end
+
+#org @EXIT
+msgbox @t7 0x6
+release
+end
+
+#org @FRZ
+msgbox @t6 0x6
+release
+end
+
+#org @BRN
+msgbox @t5 0x6
+release
+end
+
+#org @PAR
+msgbox @t4 0x6
+release
+end
+
+#org @PSN
+msgbox @t3 0x6
+release
+end
+
+#org @SLP
+msgbox @t2 0x6
+release
+end
+
+#org @t8
+= [black_fr]Choose the status condition that \nannoys you the most...
+
+#org @t7
+= [black_fr]Choose the status condition that \nannoys you the most...
+
+#org @t6
+= [black_fr]Choose the status condition that \nannoys you the most...
+
+#org @t5
+= [black_fr]Choose the status condition that \nannoys you the most...
+
+#org @t4
+= [black_fr]Choose the status condition that \nannoys you the most...
+
+#org @t3
+= [black_fr]Choose the status condition that \nannoys you the most...
+
+#org @t2
+= [black_fr]Choose the status condition that \nannoys you the most...
+
+#org @t1
+= [black_fr]Choose the status condition that \nannoys you the most...
+```
+
+```
+multichoice2 0xXPOS 0xYPOS 0xLIST 0xDEFAULTCHOICE 0xCANCEL_ON_B
+```
+
+```
+multichoice3 0xXPOS 0xYPOS 0xLIST 0xCHOICEPERROW 0xCANCEL_ON_B
+```
+
+
+#### Nickname for Pokémons
+This command will count the amount of Pokémon the player has and stores the value in LASTRESULT:
+```
+countpokemon
+```
+
+This command subtracts 1 from the value stored in LASTRESULT:
+```
+subvar 0x800D 0x1
+```
+
+This command copies the value in LASTRESULT to `0x8004`
+```
+copyvar 0x8004 0x800D
+```
+`0x8004` is the variable responsible for indicating which pokémon the player will give a nickname to.
+
+This command triggers a Nickname Pokémon scenario according to the value stored in `0x8004`:
+```
+special 0x166
+waitstate
+```
+Change the value to `0xA1` for Emerlad. Ruby also uses `0x166`.
+
+Here is an example of an NPC giving the player a Charmander and ask if he/she would like to nickname the Charmander:
+```
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+givepokemon 0x004 0x5 0x0 0x0 0x0 0x0
+fanfare 0x13E
+msgbox @t2 0x4
+waitfanfare
+closeonkeypress
+msgbox @t3 0x5
+compare 0x800D 0x1
+if 0x1 goto @nickname
+release
+end
+
+#org @nickname
+countpokemon
+subvar 0x800D 0x1
+copyvar 0x8004 0x800D
+fadescreen 0x1
+special 0x9E
+waitstate
+release
+end
+
+#org @t2
+= [black_fr][player] received a [red_fr]Charmander[black_fr]!
+
+#org @t1
+= [black_fr]Here's a [red_fr]Charmander[black_fr]!
+```

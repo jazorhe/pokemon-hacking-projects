@@ -1,0 +1,209 @@
+--- FIRE RED ---
+[00] - Yes
+No
+[01] - Eevee
+Flareon
+Jolteon
+Vaporeon
+Quit looking.
+[02] - Normal
+Black
+Pink
+Sepia 
+[03] - Hall of Fame
+Quit 
+[04] - Eggs
+Quit 
+[05] - Victories
+Quit 
+[06] - Hall of Fame
+Eggs
+Quit 
+[07] - Hall of Fame
+Victories
+Quit 
+[08] - Eggs
+Victories
+Quit 
+[09] - Hall of Fame
+Eggs
+Victories
+Quit 
+[0A] - Exit 
+[0B] - Exit 
+[0C] - Exit 
+[0D] - Bicycle $1,000,000
+No Thanks 
+[0E] - Abra 180 coins
+Clefairy 500 coins
+Dratini 2,800 coins
+Scyther 5,500 coins
+Porygon 9,999 coins
+No Thanks 
+[0F] - SLP
+PSN
+PAR
+BRN
+FRZ
+EXIT
+[10] - Yes
+No
+Info 
+[11] - Single battle
+Double battle
+Multi battle
+Info
+Exit 
+[12] - Yes
+No
+Info 
+[13] - Make a Challenge
+Info 
+Exit 
+[14] - Rooftop
+B1F
+Exit 
+[15] - Helix Fossil
+Exit 
+[16] - Dome Fossil
+Exit 
+[17] - Old Amber
+Exit 
+[18] - Helix Fossil
+Old Amber
+Exit 
+[19] - Dome Fossil
+Old Amber
+Exit 
+[1A] - Fresh Water $200
+Soda Pop $300
+Lemonade $350
+Exit 
+[1B] - 50 coins $1,000
+500 coins $10,000
+Exit 
+[1C] - Excellent
+Not So Bad 
+[1D] - Right
+Left 
+[1E] - TM13 4,000 coins
+TM23 3,500 coins
+TM24 4,000 coins
+TM30 4,500 coins
+TM35 4,000 coins
+No Thanks 
+[1F] - 5F
+4F
+3F
+2F
+1F
+Exit 
+[20] - Fresh Water
+Exit 
+[21] - Soda Pop
+Exit
+[22] - Fresh Water
+Soda Pop
+Exit 
+[23] - Lemonade
+Exit 
+[24] - Fresh Water
+Lemonade
+Exit 
+[25] - Soda Pop
+Lemonade
+Exit 
+[26] - Fresh Water
+Soda Pop
+Lemonade
+Exit 
+[27] - Trade Center
+Colosseum
+Exit 
+[28] - Game Link Cable
+Wireless
+Exit 
+[29] - Smoke Ball 800 coins
+Miracle Seed 1,000 coins
+Charcoal 1,000 coins
+Mystic water 1,000 coins
+Yellow flute 1,600 coins
+No Thanks 
+[2A] - B1F
+B2F
+B4F
+Exit 
+[2B] - Linked game play
+Direct Corner
+Union Room
+Quit 
+[2C] - Two Island
+Three Island
+Exit 
+[2D] - One Island
+Three Island
+Exit 
+[2E] - One Island
+Two Island
+Exit 
+[2F] - Trade Center
+Colosseum
+Berry Crush
+Exit 
+[30] - Nada
+Nada
+Exit
+[31] - Pokemon Jump
+Dodrio Berry-Picking
+Exit 
+[32] - Trade Center
+Colosseum
+Exit 
+[33] - 2 Tinymushrooms
+1 Big Mushroom
+[34] - Trade Center
+Colosseum
+Berry Crush
+Exit 
+[35] - Trade Center
+Colosseum
+Exit 
+[36] - Sevii Islands
+Navel Rock
+Exit 
+[37] - Sevii Islands
+Birth Island
+Exit 
+[38] - Sevii Islands
+Navel Rock
+Birth Island
+Exit 
+[39] - One Island
+Two Island
+Three Island
+Exit 
+[3A] - Vermilion
+Two Island
+Three Island
+Exit 
+[3B] - Vermilion
+One Island
+Three Island
+Exit 
+[3C] - Vermilion
+One Island
+Two Island
+Exit 
+[3D] - Vermilion
+Exit 
+[3E] - Blank
+Blank
+Exit
+[3F] - Join Group
+Become Leader
+Exit 
+[40] - Single
+Double
+Knockout
+Mixed
+Exit

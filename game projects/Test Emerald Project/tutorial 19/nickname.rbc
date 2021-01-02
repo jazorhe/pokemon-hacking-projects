@@ -1,0 +1,32 @@
+#dynamic 0x800000
+
+#org @start
+lock
+faceplayer
+msgbox @t1 0x6
+givepokemon 0x004 0x5 0x0 0x0 0x0 0x0
+fanfare 0x13E
+msgbox @t2 0x4
+waitfanfare
+closeonkeypress
+msgbox @t3 0x5
+compare 0x800D 0x1
+if 0x1 goto @nickname
+release
+end
+
+#org @nickname
+countpokemon
+subvar 0x800D 0x1
+copyvar 0x8004 0x800D
+fadescreen 0x1
+special 0x9E
+waitstate
+release
+end
+
+#org @t2
+= [black_fr][player] received a [red_fr]Charmander[black_fr]!
+
+#org @t1
+= [black_fr]Here's a [red_fr]Charmander[black_fr]!
