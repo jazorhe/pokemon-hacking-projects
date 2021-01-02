@@ -26,6 +26,13 @@
     -   [Tutorial 12: Instant Script Activation](#tutorial-12-instant-script-activation-video-link)
     -   [Tutorial 13: Advice and Errata](#tutorial-13-advice-and-errata-video-link)
     -   [Tutorial 14: Hasta La Vista, Baby](#tutorial-14-hasta-la-vista-baby-video-link)
+    -   [Tutorial 15: Trainerbattle Dissection](#tutorial-15-trainerbattle-dissection-video-link)
+    -   [Tutorial 16: Dynamic Mapping](#tutorial-16-dynamic-mapping-video-link)
+    -   [Tutorial 17: Customer Service](#tutorial-17-customer-service-video-link)
+    -   [Tutorial 18: Battle Boom Box](#tutorial-18-battle-boom-box-video-link)
+    -   [Tutorial 19: Revamping Our Options](#tutorial-19-revamping-our-options-video-link)
+    -   [Tutorial 20: Advice and Errata (3)](#tutorial-20-advice-and-errata-3-video-link)
+    -   [Tutorial 21: Advice and Errata (4)](#tutorial-21-advice-and-errata-4-video-link)
 
 ## Mapping:
 
@@ -1395,7 +1402,7 @@ sound 0xSOUND
 -   [Pokémon Generation III ROM Hacking - Sound Values.txt](docs/Pokémon%20Generation%20III%20ROM%20Hacking%20-%20Sound%20Values.txt)
 
 
-### Tutorial 19: Revamping Our Options (*[Video link](https://www.youtube.com/watch?v=zKOkaRWfp1E&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=20)*)
+### Tutorial 19: Revamping Our Options (*[Video link](https://www.youtube.com/watch?v=RsuqFz4hb84&list=PLfI5DBI4tNyLBYGNhf1Ee8cgdmMtiilps&index=20)*)
 #### Objectives
 -   Spawn Points
 -   Utilising Multichoice Boxes
