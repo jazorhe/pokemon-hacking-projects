@@ -11,12 +11,13 @@
 
 ## Contents:
 -   **Mapping**
-    -   Tutorial 1
-    -   Tutorial 2
-    -   Tutorial 3
-    -   Tutorial 4
-    -   Tutorial 5
-    -   Tutorial 6
+    -   Tutorial 0: Introduction
+    -   Tutorial 1: The Basics of Mapping
+    -   Tutorial 2: Map Diversity
+    -   Tutorial 3: The Nature of Tiles
+    -   Tutorial 4: Deviating from Vanilla Tiles
+    -   Tutorial 5: Bringing Tiles to Life
+    -   Tutorial 6: Advice and Errata (1)
 -   **Scripting**
     -   [Tutorial 7: The Basics of Scripting](#tutorial-7-the-basics-of-scripting-video-link)
     -   [Tutorial 8: Msgbox Exhaustion](#tutorial-8-msgbox-exhaustion-video-link)
@@ -33,6 +34,13 @@
     -   [Tutorial 19: Revamping Our Options](#tutorial-19-revamping-our-options-video-link)
     -   [Tutorial 20: Advice and Errata (3)](#tutorial-20-advice-and-errata-3-video-link)
     -   [Tutorial 21: Advice and Errata (4)](#tutorial-21-advice-and-errata-4-video-link)
+-   **Misc**:
+    -   Tutorial 22: Hex Maniac
+    -   Tutorial 23: Battle Sprite Replacement
+    -   Tutorial 24: Overworld Sprite Management | PART 1
+    -   Tutorial 25: Overworld Sprite Management | PART 2
+    -   Tutorial 26: Cry Editing
+    -   Tutorial 27: Hexadecimal Palette Manipulation
 
 ## Mapping:
 
